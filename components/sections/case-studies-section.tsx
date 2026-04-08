@@ -149,10 +149,12 @@ function CaseStudyCarousel({ study }: { study: CaseStudy }) {
 }
 
 export function CaseStudiesSection() {
+  const visibleCaseStudies = caseStudies.slice(0, 1);
+
   return (
     <section id="works" className="pb-16 pt-6 sm:pb-20">
       <Container className="max-w-[1140px]">
-        <div className="mb-10 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mb-10 flex flex-col gap-6">
           <div>
             <h2 className="font-serif text-[2.5rem] font-normal leading-[52px] text-ink">
               Case Studies
@@ -161,19 +163,10 @@ export function CaseStudiesSection() {
               Some case studies are data sensitive, so you need password to see that.
             </p>
           </div>
-
-          <a
-            href="#"
-            onPointerEnter={() => playButtonSound("hover")}
-            onClick={() => playButtonSound("click")}
-            className="inline-flex w-fit items-center justify-center rounded-xl border-2 border-ink bg-transparent px-4 py-3 text-center text-base leading-none text-ink shadow-[0_4px_0_rgba(0,0,0,0.15)] transition-[background-color,box-shadow,transform] duration-200 hover:translate-x-1 hover:translate-y-1 hover:bg-ink hover:text-white hover:shadow-none active:translate-x-1 active:translate-y-1 active:shadow-none"
-          >
-            View All Case Studies
-          </a>
         </div>
 
         <div className="flex flex-col gap-[30px]">
-          {caseStudies.map((study, index) => (
+          {visibleCaseStudies.map((study, index) => (
             <article
               key={`${study.title}-${index}`}
               className="group/case flex flex-col overflow-hidden rounded-[24px] border border-white/45 bg-card/65 shadow-[0_18px_50px_rgba(33,35,41,0.06)] backdrop-blur-xl transition-[border-color,box-shadow] duration-200 hover:border-white/70 hover:shadow-[0_20px_54px_rgba(33,35,41,0.08)] xl:flex-row xl:items-center"

@@ -208,91 +208,205 @@ export const caseStudies = [
   {
     slug: "nrev-onboarding-retention",
     categories: ["Sixer", "Mobile", "Retention"],
-    title: "Fixing early drop-offs: increasing week-1 retention by 27%",
-    company: "nRev",
+    title: "Fixing early drop-offs by improving first-week retention",
+    company: "Sixer",
     role: "Product Design Lead",
-    scope: "Onboarding, Retention, Revenue Impact",
+    scope: "1G Trading, Retention, IPL Activation",
     period: "2026",
     description:
-      "Early user drop-offs were impacting activation. I redesigned the onboarding experience by addressing key friction points and aligning flows with user intent, leading to a 27% increase in week-1 retention.",
+      "Improved early retention for Sixer's 1G trading experience by simplifying first-week friction, clarifying wallet and trade outcomes, and strengthening the path from acquisition to repeat trading.",
     overview:
-      "A focused onboarding redesign shaped around first-week activation, product clarity, and measurable retention improvement.",
+      "A focused first-week retention redesign for Sixer's IPL acquisition window, shaped around product clarity, trading confidence, and measurable activation improvements.",
     details: {
       pageTitle: "Fixing early drop-offs by improving week one retention by 27%",
       pageDescription:
-        "This project focused on improving early user retention for nRev. While acquisition was growing, a large percentage of users dropped off within the first week. The onboarding experience did not clearly communicate value or guide users toward meaningful actions.\n\nThe goal was to identify key friction points, simplify the experience, and improve activation during the initial user journey.",
+        "This project focused on improving early retention for Sixer's 1G trading experience during a high-intent acquisition window around IPL. While acquisition was strong, a large share of users dropped off within the first week after signup. The core issue was not just awareness, but the gap between user intent, product understanding, and the first meaningful outcome.\n\nThe goal was to identify the biggest first-week friction points, simplify the experience, and improve activation during the most critical part of the journey.",
+      context:
+        "Sixer is a fantasy sports trading platform where users buy and sell player stocks based on expected performance. Unlike traditional fantasy formats, the first-time user journey depends heavily on understanding pricing, outcomes, confidence, and wallet movement early in the experience.\n\nDuring IPL, user acquisition scaled rapidly. But retention analysis showed a sharp drop immediately after onboarding and first participation. The strongest decline happened in week one, which made early retention the highest-leverage opportunity for product improvement.",
       problemDescription:
-        "Users were signing up but not reaching the core value of the product. Early drop-offs were impacting both retention and long term engagement.",
+        "The main issue was not top-of-funnel drop-off.\n\nUsers were successfully moving through the early funnel. They signed up, completed onboarding, added money to the wallet, and participated in at least one match. The real retention problem started after that first active session.\n\nOnce users entered a trade and completed their first match participation, a large share of them showed no meaningful activity for the next week, even during IPL when marquee matches were happening almost every day.\n\nThis made the problem more serious than a simple onboarding issue. Users were not bouncing before value entry. They were experiencing the product, but the experience was not strong enough to pull them back into the next trading loop.\n\nThe core challenge became:",
+      problemAreas: [
+        "Users were able to enter the product and complete the first trade journey.",
+        "Daily marquee matches were available, yet users were not returning consistently.",
+        "The post-trade experience did not create enough momentum for the next session.",
+        "The product was failing to convert first participation into repeat match engagement.",
+      ],
+      problemClosing:
+        "This weak post-match loop directly affected week one retention, repeat trading behavior, and long-term trading volume.",
       keyIssues: [
         {
-          title: "Unclear value moment",
+          title: "Trust and clarity gaps were hurting confidence",
           body:
-            "Users did not quickly understand what the product could do for them.",
+            "Users struggled with wallet understanding, consecutive loss perception, low visible bonus value, and unclear next steps after the first few sessions.",
         },
         {
-          title: "Fragmented onboarding",
+          title: "Flat outcomes were more dangerous than small losses",
           body:
-            "The flow lacked structure and did not guide users toward meaningful actions.",
+            "Users were more likely to return when they had a clear outcome. No-profit and no-loss days had the lowest comeback rate.",
         },
         {
-          title: "Low activation",
+          title: "Many churners still had money left",
           body:
-            "A large percentage of users did not complete the first key action.",
+            "Around 60 to 70 percent of week-one churners still had sufficient real wallet or chips for more transactions, but were not engaging.",
         },
         {
-          title: "No feedback loop",
+          title: "The biggest drop happened in the first week",
           body:
-            "There was limited visibility into user behavior after onboarding.",
+            "The sharpest retention decline happened right after onboarding and first trading, making week one the highest-leverage journey to fix.",
+        },
+      ],
+      problemMethods: [
+        {
+          title: "Quantitative data",
+          body:
+            "We analyzed IPL cohort retention and found that the biggest drop was happening after users completed their first trade participation. The highest-risk inactivity window sat within the first 3 to 7 days.",
+        },
+        {
+          title: "Wallet and RTP analysis",
+          body:
+            "We studied money flow and trading outcomes to understand return behavior. The analysis showed that cumulative profit had a stronger impact on comeback behavior than single-session outcomes, and flat sessions were especially risky.",
+        },
+        {
+          title: "Behavioral analysis",
+          body:
+            "We found that many week-one churners still had enough wallet balance or chips to continue. This showed the issue was not only money exhaustion, but also weak confidence and low motivation to return.",
+        },
+        {
+          title: "Competitive and lifecycle inputs",
+          body:
+            "We reviewed competitor retention flows and lifecycle communication patterns to understand how stronger post-trade nudges and clearer value reinforcement could support repeat engagement.",
+        },
+      ],
+      findings: [
+        {
+          title: "The biggest drop happened in the first week",
+          body:
+            "The sharpest retention decline happened right after onboarding and first trading, making week one the most important part of the journey to fix.",
+        },
+        {
+          title: "Referred traffic distorted the baseline",
+          body:
+            "Non-referred users showed much better retention than referred users, so the design problem needed to be studied through the non-referred base to avoid misleading signals.",
+        },
+        {
+          title: "Flat outcomes were more dangerous than small losses",
+          body:
+            "Users were more likely to return when they had a clear outcome. The stronger predictor was whether users felt they were ahead overall.",
+        },
+        {
+          title: "Many churners still had money left",
+          body:
+            "A large portion of week-one churners still had enough value in wallet or chips to continue, but they did not return.",
+        },
+        {
+          title: "Trust and clarity gaps were hurting confidence",
+          body:
+            "Users struggled with wallet understanding, consecutive loss perception, low visible bonus value, and unclear next steps.",
         },
       ],
       productGoal:
-        "The goal was to improve early retention by making onboarding more structured, intuitive, and outcome-driven.",
-      objectives: [
-        "Help users understand product value within the first session",
-        "Increase completion of key onboarding actions",
-        "Reduce friction across the initial user journey",
-        "Improve week one retention and activation",
+        "The product goal was to improve early retention by making the first-week journey more structured, more understandable, and more confidence-building.",
+      goalItems: [
+        {
+          title: "Help users understand product value within the first session",
+          body:
+            "Make trading easier to decode by simplifying how the product works, what outcomes mean, and how users can make progress.",
+        },
+        {
+          title: "Increase completion of key onboarding actions",
+          body:
+            "Improve the path from signup to first trade by reducing confusion and decision friction.",
+        },
+        {
+          title: "Reduce friction across the initial user journey",
+          body:
+            "Improve discovery, trade entry, and wallet clarity so users can move faster with more confidence.",
+        },
+        {
+          title: "Improve week-one re-engagement and activation",
+          body:
+            "Design for the first 3 to 5 day drop-off window and help users return before they hard churn.",
+        },
       ],
       finalSolution:
-        "The final onboarding experience focused on guiding users step by step toward their first meaningful outcome.",
-      finalSolutionImprovements: [
-        "Clear value communication in the first interaction",
-        "Simplified flow with fewer decision points",
-        "Progressive disclosure instead of overwhelming screens",
-        "Stronger alignment between user intent and product actions",
+        "We approached the problem as a combination of product experience, discovery, and retention design.",
+      solutionItems: [
+        {
+          title: "Simplified onboarding and first-trade entry",
+          body:
+            "Improved onboarding and first-trade clarity. Improved onboarding hierarchy so the value proposition was easier to understand. Reduced the learning burden before first participation. Made first trade entry more guided and confidence-building.",
+        },
+        {
+          title: "Better wallet clarity and trust communication",
+          body:
+            "Improved how wallet state, returns, and outcome progression were communicated. Reduced ambiguity around what happened after a trade. Made the experience feel more trustworthy during volatile early sessions.",
+        },
+        {
+          title: "Improved home discovery and player recommendation",
+          body:
+            "Made it easier to discover relevant matches and players quickly. Reduced choice paralysis through better recommendations. Improved the path from browsing to trade action.",
+        },
+        {
+          title: "Retention-led product thinking",
+          body:
+            "Designed around the first 3 to 5 day churn window instead of waiting for long-term churn. Aligned product decisions with lifecycle triggers such as inactivity windows, available redemption value, and comeback nudges. Focused on improving repeat trade behavior, not just first trade completion.",
+        },
       ],
       finalSolutionClosing:
-        "This helped users reach value faster and reduced drop-offs significantly.",
+        "We treated first-week retention as a system problem, balancing activation, trust, trade completion, and repeat trading instead of optimizing only one funnel step.",
       solutionExplorations:
-        "We explored multiple onboarding directions to understand how users interacted with different flows. Each iteration focused on reducing friction, improving clarity, and guiding users toward meaningful actions.\n\nWe tested variations in structure, content hierarchy, and interaction patterns before arriving at the final approach.",
+        "The final solution combined onboarding clarity, discovery improvements, trade confidence, wallet trust, and lifecycle re-engagement around the first 3 to 5 day drop-off window.",
       closingLine:
-        "The redesigned onboarding experience helped users understand value earlier, take meaningful actions faster, and stay engaged beyond the first week.",
+        "The redesign improved both activation and trading health.",
       metrics: [
         {
-          number: "+27%",
-          title: "Increase in week one retention",
-          description: "",
+          number: "63.4% -> 72.5%",
+          title: "Onboarding completion rate",
+          description: "Q1 activation impact",
         },
         {
-          number: "58%",
-          title: "Improvement in onboarding completion rate",
-          description: "",
+          number: "75.9% -> 82.5%",
+          title: "Onboarding completion rate",
+          description: "Q1 activation impact",
         },
         {
-          number: "4 Key Flows",
-          title: "Redesigned to reduce friction and improve clarity",
-          description: "",
+          number: "45.6% -> 60.9%",
+          title: "Repeat trade rate",
+          description: "Q2 retention and trading impact",
         },
         {
-          number: "2x Faster Activation",
-          title: "Users reached first meaningful action faster",
-          description: "",
+          number: "4.8% -> 3.1%",
+          title: "Failed trade rate",
+          description: "Q2 retention and trading impact",
+        },
+        {
+          number: "13% -> 9%",
+          title: "Trust-related issue rate",
+          description: "Q2 retention and trading impact",
+        },
+        {
+          number: "₹180 Cr -> ₹235 Cr",
+          title: "Average monthly trading volume",
+          description: "Q2 retention and trading impact",
         },
       ],
+      strategicOutcome:
+        "The early journey moved from a fragile first-use experience to a more confident and repeatable trading loop. Instead of losing users immediately after onboarding or first participation, the redesigned experience helped more users understand value, complete their first trade, and come back again.",
+      myRole:
+        "I led the product design effort end to end across problem framing, retention hypothesis building, UX direction, solution design, and final experience improvements. This included working closely with analytics inputs, lifecycle thinking, and business KPI alignment to ensure the design changes improved both user confidence and commercial outcomes.",
+      heroImage: {
+        src: "/assets/sixer-facelift-home.png",
+        alt: "Sixer facelift home banner showing the trading home screen and highlighted match card",
+      },
     },
     tags: ["Onboarding", "Retention", "User Research", "Drop Offs"],
-    initialIndex: 4,
-    images: caseStudyPlaceholderSlides,
+    initialIndex: 0,
+    images: [
+      {
+        src: "/assets/sixer-facelift-home.png",
+        alt: "Sixer facelift home cover showing the trading home screen and highlighted match card",
+      },
+    ],
   },
   {
     slug: "nrev-onboarding-conversion",
