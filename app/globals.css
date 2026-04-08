@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Figtree:wght@400;500;600&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,4 +10,164 @@ html {
 
 body {
   text-rendering: optimizeLegibility;
+}
+
+@keyframes badge-spin-clockwise {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.badge-spin-clockwise {
+  animation: badge-spin-clockwise 120s linear infinite;
+}
+
+@keyframes build-line-gradient-drift {
+  from {
+    background-position: 0 100%;
+  }
+
+  to {
+    background-position: 0 -100%;
+  }
+}
+
+.build-line-gradient {
+  background-image: linear-gradient(
+    180deg,
+    #efe1cd 0%,
+    #efe1cd 30%,
+    rgba(90, 143, 34, 0.52) 50%,
+    #efe1cd 70%,
+    #efe1cd 100%
+  );
+  background-size: 100% 300%;
+  animation: build-line-gradient-drift 16s linear infinite;
+}
+
+@keyframes my-stacks-ticker-left-to-right {
+  from {
+    transform: translateX(-33.333%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes my-stacks-ticker-right-to-left {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-33.333%);
+  }
+}
+
+.my-stacks-ticker-ltr {
+  animation: my-stacks-ticker-left-to-right 85s linear infinite;
+}
+
+.my-stacks-ticker-rtl {
+  animation: my-stacks-ticker-right-to-left 85s linear infinite;
+}
+
+.my-stacks-fade {
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 10%,
+    #000 90%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 10%,
+    #000 90%,
+    transparent 100%
+  );
+}
+
+@keyframes contact-row-stroke-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.contact-row-stroke::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from 0deg,
+    rgba(90, 143, 34, 0),
+    rgba(90, 143, 34, 0.42),
+    rgba(240, 219, 177, 0.18),
+    rgba(90, 143, 34, 0)
+  );
+  opacity: 0;
+  transition: opacity 240ms ease;
+}
+
+.contact-row-stroke::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: calc(1rem - 1px);
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(18px);
+}
+
+.contact-row-stroke:hover::before {
+  opacity: 1;
+  animation: contact-row-stroke-spin 5s linear infinite;
+}
+
+@keyframes bird-wing-settle {
+  0%,
+  100% {
+    transform: rotate(0deg) translateY(0);
+  }
+
+  50% {
+    transform: rotate(-3deg) translateY(-1px);
+  }
+}
+
+@keyframes bird-wing-fly {
+  0%,
+  100% {
+    transform: rotate(4deg) translateY(0);
+  }
+
+  50% {
+    transform: rotate(-18deg) translateY(-5px);
+  }
+}
+
+@keyframes bird-body-fly {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-4px) rotate(-2deg);
+  }
+}
+
+.bird-wing {
+  animation: bird-wing-settle 4.8s ease-in-out infinite;
+  transform-origin: 58px 31px;
+}
+
+.bird-is-flying {
+  animation: bird-body-fly 920ms ease-in-out infinite;
+}
+
+.bird-is-flying .bird-wing {
+  animation: bird-wing-fly 280ms ease-in-out infinite;
 }

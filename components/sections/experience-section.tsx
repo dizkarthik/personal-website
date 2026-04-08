@@ -1,45 +1,91 @@
 import { Container } from "@/components/ui/container";
 import { experienceLogos } from "@/lib/site-data";
 
+function scallopedSealPath(cx: number, cy: number, innerRadius: number, outerRadius: number, scallops: number) {
+  const points: string[] = [];
+
+  for (let i = 0; i < scallops * 2; i += 1) {
+    const angle = (Math.PI * i) / scallops - Math.PI / 2;
+    const radius = i % 2 === 0 ? outerRadius : innerRadius;
+    const x = cx + Math.cos(angle) * radius;
+    const y = cy + Math.sin(angle) * radius;
+    points.push(`${i === 0 ? "M" : "L"} ${x.toFixed(2)} ${y.toFixed(2)}`);
+  }
+
+  return `${points.join(" ")} Z`;
+}
+
 function BadgeSeal() {
+  const outerPath = scallopedSealPath(200, 200, 158, 168, 22);
+
   return (
-    <div className="relative mx-auto flex h-56 w-56 items-center justify-center md:h-72 md:w-72">
-      <div className="absolute inset-0 rounded-full border-2 border-moss/80 bg-[#eef2c9]" />
-      <div className="absolute inset-[14px] rounded-full border border-moss/70 border-dashed" />
-      <div className="absolute inset-[34px] rounded-full border border-moss/60" />
-      <div className="absolute inset-[48px] rounded-full border border-moss/50 bg-canvas/70" />
-      <div className="relative text-center text-moss">
-        <p className="font-serif text-5xl font-semibold leading-none md:text-6xl">
+    <div className="mx-auto h-[13.75rem] w-[13.75rem] md:h-[19.5rem] md:w-[19.5rem]">
+      <svg viewBox="0 0 400 400" className="h-full w-full" aria-hidden="true">
+        <path d={outerPath} fill="#eef2c9" stroke="#3d8427" strokeWidth="3" />
+        <circle cx="200" cy="200" r="118" fill="none" stroke="#3d8427" strokeWidth="3" />
+        <circle cx="200" cy="200" r="99" fill="#fffaf1" stroke="#3d8427" strokeWidth="2" />
+
+        <defs>
+          <path
+            id="badgeTextPath"
+            d="
+              M 200,200
+              m -140,0
+              a 140,140 0 1,1 280,0
+              a 140,140 0 1,1 -280,0
+            "
+          />
+        </defs>
+
+        <text
+          fill="#3d8427"
+          fontSize="21"
+          letterSpacing="6.5"
+          fontFamily="Avenir Next, Avenir, Segoe UI, sans-serif"
+        >
+          <textPath href="#badgeTextPath" startOffset="50%" textAnchor="middle">
+            YEARS BUILDING &amp; SCALING PRODUCTS * YEARS BUILDING &amp; SCALING PRODUCTS *
+          </textPath>
+        </text>
+
+        <text
+          x="200"
+          y="220"
+          textAnchor="middle"
+          fill="#3d8427"
+          fontSize="74"
+          fontFamily="DM Serif Text, Iowan Old Style, Georgia, serif"
+          fontWeight="600"
+        >
           14+
-        </p>
-      </div>
-      <p className="absolute inset-x-6 top-6 text-center text-[10px] uppercase tracking-[0.42em] text-moss/80 md:text-xs">
-        Years Building &amp; Scaling Products
-      </p>
-      <div className="absolute inset-0 rounded-full [mask-image:radial-gradient(circle,transparent_58%,black_58%)] before:absolute before:inset-0 before:rounded-full before:bg-[conic-gradient(from_0deg,transparent_0deg,transparent_14deg,#eef2c9_14deg,#eef2c9_22deg,transparent_22deg,transparent_36deg,#eef2c9_36deg,#eef2c9_44deg,transparent_44deg,transparent_58deg,#eef2c9_58deg,#eef2c9_66deg,transparent_66deg,transparent_80deg,#eef2c9_80deg,#eef2c9_88deg,transparent_88deg,transparent_102deg,#eef2c9_102deg,#eef2c9_110deg,transparent_110deg,transparent_124deg,#eef2c9_124deg,#eef2c9_132deg,transparent_132deg,transparent_146deg,#eef2c9_146deg,#eef2c9_154deg,transparent_154deg,transparent_168deg,#eef2c9_168deg,#eef2c9_176deg,transparent_176deg,transparent_190deg,#eef2c9_190deg,#eef2c9_198deg,transparent_198deg,transparent_212deg,#eef2c9_212deg,#eef2c9_220deg,transparent_220deg,transparent_234deg,#eef2c9_234deg,#eef2c9_242deg,transparent_242deg,transparent_256deg,#eef2c9_256deg,#eef2c9_264deg,transparent_264deg,transparent_278deg,#eef2c9_278deg,#eef2c9_286deg,transparent_286deg,transparent_300deg,#eef2c9_300deg,#eef2c9_308deg,transparent_308deg,transparent_322deg,#eef2c9_322deg,#eef2c9_330deg,transparent_330deg,transparent_344deg,#eef2c9_344deg,#eef2c9_352deg,transparent_352deg)]" />
+        </text>
+      </svg>
     </div>
   );
 }
 
 export function ExperienceSection() {
   return (
-    <section id="about" className="pb-16 pt-6 sm:pb-24 lg:pt-10">
+    <section id="about" className="pb-14 pt-7 sm:pb-20 lg:pt-12">
       <Container>
-        <div className="grid gap-12 lg:grid-cols-[360px_minmax(0,1fr)] lg:items-center lg:gap-20">
+        <div className="grid gap-12 lg:grid-cols-[20rem_1fr] lg:items-center lg:gap-28">
           <BadgeSeal />
 
-          <div className="max-w-[32rem]">
-            <p className="max-w-md text-2xl font-medium leading-snug tracking-[-0.03em] text-ink sm:text-3xl">
+          <div className="max-w-[30.75rem]">
+            <p className="max-w-[27.5rem] text-[2rem] font-medium leading-[1.35] tracking-[-0.03em] text-ink">
               Built and scaled products in high-growth environments.
             </p>
 
-            <div className="mt-10 flex flex-wrap items-center gap-8 md:gap-14">
+            <div className="mt-10 flex flex-wrap items-center gap-10 md:gap-16">
               {experienceLogos.map((logo) => (
                 <img
                   key={logo.alt}
                   src={logo.src}
                   alt={logo.alt}
-                  className={logo.className}
+                  width={logo.width}
+                  height={logo.height}
+                  className="h-12 shrink-0 object-contain"
+                  style={{ width: `${logo.width}px` }}
                 />
               ))}
             </div>

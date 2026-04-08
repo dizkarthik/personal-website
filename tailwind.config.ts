@@ -10,17 +10,18 @@ const config: Config = {
     extend: {
       boxShadow: {
         soft: "0 24px 60px rgba(37, 32, 24, 0.08)",
-        button: "0 4px 0 rgba(26, 58, 13, 1)",
-        outlineButton: "0 4px 0 rgba(0, 0, 0, 0.12)",
+        button: "0 4px 0 #1a3a0d",
+        outlineButton: "0 4px 0 rgba(0, 0, 0, 0.15)",
       },
       colors: {
         canvas: "#fffaf1",
-        ink: "#111111",
-        moss: "#45720e",
-        olive: "#3c7b1d",
+        ink: "#212329",
+        copy: "#383b36",
+        moss: "#5a8f22",
+        olive: "#5a8f22",
         oliveDark: "#1a3a0d",
-        line: "#e7dbc8",
-        card: "#fffdf8",
+        line: "#f0dbb1",
+        card: "#fffcf6",
         cardTint: "#fffefb",
       },
       borderRadius: {
@@ -28,6 +29,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: [
+          "Figtree",
           "Avenir Next",
           "Avenir",
           "Segoe UI",
@@ -35,6 +37,7 @@ const config: Config = {
           "sans-serif",
         ],
         serif: [
+          "DM Serif Text",
           "Iowan Old Style",
           "Palatino Linotype",
           "Book Antiqua",
@@ -43,7 +46,7 @@ const config: Config = {
         ],
       },
       maxWidth: {
-        content: "75rem",
+        content: "70rem",
       },
     },
   },

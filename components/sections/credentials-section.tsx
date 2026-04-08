@@ -6,10 +6,10 @@ import { credentialCards } from "@/lib/site-data";
 type CardTone = "warm" | "plain" | "soft" | "accent";
 
 const toneClasses: Record<CardTone, string> = {
-  warm: "bg-[linear-gradient(180deg,#fffef9_0%,#f8f2de_100%)]",
-  plain: "bg-cardTint",
-  soft: "bg-[linear-gradient(180deg,#fffefb_0%,#f7f2e9_100%)]",
-  accent: "bg-[linear-gradient(180deg,#eef5df_0%,#fdfaf2_100%)]",
+  warm: "bg-card/65",
+  plain: "bg-card/65",
+  soft: "bg-card/65",
+  accent: "bg-card/65",
 };
 
 export function CredentialsSection() {
@@ -23,7 +23,7 @@ export function CredentialsSection() {
           <h2 className="text-4xl font-medium leading-tight tracking-[-0.04em] text-ink sm:text-5xl">
             A design leadership profile built for zero-to-one and scale.
           </h2>
-          <p className="max-w-2xl text-base leading-8 text-ink/70 sm:text-lg">
+          <p className="max-w-2xl text-base leading-8 text-ink/70 sm:text-base">
             A compact snapshot of the kind of product, team, and business problems
             I solve best.
           </p>
@@ -34,7 +34,7 @@ export function CredentialsSection() {
             <article
               key={card.title}
               className={cn(
-                "rounded-[2rem] p-8 shadow-soft",
+                "rounded-[2rem] border border-white/45 p-8 shadow-[0_18px_50px_rgba(33,35,41,0.06)] backdrop-blur-xl",
                 toneClasses[card.tone as CardTone],
                 card.span,
               )}
