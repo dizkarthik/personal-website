@@ -13,8 +13,7 @@ type AboutStat = {
   description: string;
 };
 
-const profileImage =
-  "https://www.figma.com/api/mcp/asset/0042c21a-31fa-4099-b9c4-8a6b6b3ebb33";
+const profileImage = "/assets/about-me.png";
 const awardIcon =
   "https://www.figma.com/api/mcp/asset/a736592b-b186-4bf0-b5d8-4d5e93a8edaa";
 const resumeUrl =
@@ -38,7 +37,12 @@ const tools: Tool[] = [
   { name: "Webflow", icon: "/assets/tool-logos/webflow.png" },
   { name: "Posthog", icon: "/assets/tool-logos/posthog.png" },
   { name: "Mixpanel", icon: "/assets/tool-logos/mixpanel.png" },
+  { name: "Supabase", icon: "/assets/tool-logos/supabase.png" },
   { name: "Notion", icon: "/assets/tool-logos/notion.png" },
+  { name: "GitHub", icon: "/assets/tool-logos/github.png" },
+  { name: "Vercel", icon: "/assets/tool-logos/vercel.png" },
+  { name: "Replit", icon: "/assets/tool-logos/replit.png" },
+  { name: "Lovable", icon: "/assets/tool-logos/lovable.png" },
   { name: "Codex", icon: "/assets/tool-logos/codex.png" },
 ];
 
@@ -152,16 +156,13 @@ export function ToolsProcessSection() {
         <div className="flex flex-col gap-6">
           <div className="grid gap-5 lg:grid-cols-[200px_minmax(0,680px)_200px]">
             <figure className="overflow-hidden rounded-[20px] border border-white/45 bg-card/65 shadow-[0_18px_50px_rgba(33,35,41,0.06)] backdrop-blur-xl">
-              <div className="h-[160px] overflow-hidden sm:h-[204px]">
+              <div className="h-[272px] overflow-hidden">
                 <img
                   src={profileImage}
                   alt="Karthik M"
-                  className="h-full w-full object-cover object-top"
+                  className="block h-full w-full object-cover object-top"
                 />
               </div>
-              <figcaption className="bg-white/60 px-4 py-4 text-center text-base font-medium leading-none text-moss backdrop-blur-xl">
-                Karthik M
-              </figcaption>
             </figure>
 
             <div className="flex min-h-[240px] flex-col justify-start rounded-[16px] border border-white/45 bg-card/65 px-7 py-8 shadow-[0_18px_50px_rgba(33,35,41,0.06)] backdrop-blur-xl">

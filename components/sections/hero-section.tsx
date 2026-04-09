@@ -1,8 +1,7 @@
 import { Container } from "@/components/ui/container";
 import { experienceLogos, heroMetrics } from "@/lib/site-data";
 
-const portraitStampImage =
-  "https://www.figma.com/api/mcp/asset/ea1158ae-f3f3-423f-aec6-852dce6f51f4";
+const portraitStampImage = "/assets/hero-image.png";
 const badgeBaseImage = "/assets/badge-base-rotate.svg";
 const badgeNumberImage = "/assets/badge-14.svg";
 

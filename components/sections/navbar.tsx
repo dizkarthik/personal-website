@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 import { Container } from "@/components/ui/container";
@@ -95,23 +94,23 @@ export function Navbar() {
             className={cn(
               "flex flex-col gap-5 transition-[background-color,border-color,box-shadow,backdrop-filter,padding] duration-300 ease-out md:flex-row md:items-center md:justify-between",
               isScrolled &&
-                "rounded-[16px] border border-white/45 bg-canvas/70 px-4 py-3 shadow-[0_12px_40px_rgba(33,35,41,0.1)] backdrop-blur-xl md:px-5",
+                "mx-auto max-w-[980px] rounded-[16px] border border-[rgba(33,35,41,0.08)] bg-canvas/70 px-4 py-3 shadow-[0_12px_40px_rgba(33,35,41,0.1)] backdrop-blur-xl md:px-5",
             )}
           >
             <div className="flex items-center justify-between gap-4 md:justify-start md:gap-8">
-              <Link href="/" aria-label="Go to homepage">
+              <a href="/" aria-label="Go to homepage">
                 <LogoMark />
-              </Link>
+              </a>
               <nav aria-label="Primary navigation" className="hidden overflow-x-auto md:block">
                 <ul className="flex min-w-max items-center gap-10 text-base text-ink">
                   {navLinks.map((link) => (
                     <li key={link.href}>
-                      <Link
+                      <a
                         href={link.href}
                         className="transition-colors duration-200 hover:text-moss"
                       >
                         {link.label}
-                      </Link>
+                      </a>
                     </li>
                   ))}
                 </ul>
@@ -135,12 +134,12 @@ export function Navbar() {
               <ul className="flex min-w-max items-center gap-6 text-base text-ink sm:gap-10">
                 {navLinks.map((link) => (
                   <li key={link.href}>
-                    <Link
+                    <a
                       href={link.href}
                       className="transition-colors duration-200 hover:text-moss"
                     >
                       {link.label}
-                    </Link>
+                    </a>
                   </li>
                 ))}
               </ul>

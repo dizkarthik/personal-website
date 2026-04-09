@@ -3,8 +3,8 @@ import { notFound } from "next/navigation";
 import { FooterCtaSection } from "@/components/sections/footer-cta-section";
 import { Navbar } from "@/components/sections/navbar";
 import { Container } from "@/components/ui/container";
+import { HorizontalScrollGallery } from "@/components/ui/horizontal-scroll-gallery";
 import { InteractiveBackground } from "@/components/ui/interactive-background";
-import { StickyQuickLinks } from "@/components/ui/sticky-quick-links";
 import { caseStudies } from "@/lib/site-data";
 
 type CaseStudyPageProps = {
@@ -33,29 +33,6 @@ const problemPoints = [
     title: "Weak measurement loop",
     body:
       "The team needed cleaner checkpoints to connect design decisions to product outcomes.",
-  },
-];
-
-const conclusionMetrics = [
-  {
-    number: "58%",
-    title: "Activation Lift",
-    description: "More users reached the first meaningful product action.",
-  },
-  {
-    number: "+27%",
-    title: "Week-1 Retention",
-    description: "The redesigned flow improved early retention signals.",
-  },
-  {
-    number: "4",
-    title: "Reusable Patterns",
-    description: "Core onboarding patterns were turned into scalable product blocks.",
-  },
-  {
-    number: "2x",
-    title: "Faster Iteration",
-    description: "The team could test and refine onboarding decisions faster.",
   },
 ];
 
@@ -153,22 +130,36 @@ const fallbackDetails = {
     "We explored multiple onboarding directions to understand how users interacted with different flows. Each iteration focused on reducing friction, improving clarity, and guiding users toward meaningful actions.",
   closingLine:
     "The final direction brought the onboarding story, product actions, and measurement loop into one clearer system.",
-  metrics: conclusionMetrics,
+  metrics: [
+    {
+      number: "+27%",
+      title: "Week 1 Retention",
+      subtitle: "Reduced early churn and improved user activation",
+    },
+    {
+      number: "+34%",
+      title: "Repeat trade rate",
+      subtitle: "shows behavioral retention improvement",
+    },
+    {
+      number: "+₹55 Cr",
+      title: "Monthly trading volume",
+      subtitle: "Revenue Boost",
+    },
+  ],
   strategicOutcome:
     "The project helped shift the early journey from a fragile first-use experience to a more confident and repeatable product loop.",
   myRole:
     "I led the product design effort end to end across problem framing, retention hypothesis building, UX direction, solution design, and final experience improvements.",
 };
 
-const sectionTabs = [
-  { label: "Context", href: "#context" },
-  { label: "The Problem", href: "#the-problem" },
-  { label: "Direction", href: "#direction" },
-  { label: "Product Goal", href: "#product-goal" },
-  { label: "KPI", href: "#outcome" },
-  { label: "Process", href: "#process" },
-  { label: "Solution", href: "#solution" },
-  { label: "Outcome", href: "#outcome" },
+const assumptionCopy =
+  "Our initial assumption was that RTP was weaker, meaning users were making a loss in their first few trades and not seeing enough proof of value early enough.";
+
+const designPrinciples = [
+  "Reduce cognitive load in the first session",
+  "Make the first action obvious and confidence-building",
+  "Build trust before asking users to commit",
 ];
 
 function SectionBlock({
@@ -244,9 +235,7 @@ function MediaPanel({
   className?: string;
 }) {
   return (
-    <div
-      className={`overflow-hidden rounded-[20px] border-[5px] border-white shadow-[0_1px_2px_rgba(0,0,0,0.1)] ${className}`}
-    >
+    <div className={`overflow-hidden rounded-[20px] ${className}`}>
       {src ? (
         <img src={src} alt={alt ?? ""} className="h-full w-full object-cover" />
       ) : null}
@@ -311,40 +300,39 @@ function OutcomeCard({
   metric: {
     number: string;
     title: string;
-    description?: string;
+    subtitle?: string;
   };
 }) {
-  const isDown = metric.number.includes("13%") || metric.number.includes("4.8%");
+  const isDown = metric.number.trim().startsWith("-");
+  const directionLabel = isDown ? "decreased by" : "increased by";
 
   return (
-    <div className="rounded-[16px] border border-line bg-white p-6">
+    <div className="rounded-[16px] border border-[#f0dbb1] bg-white p-6">
       <div className="flex items-start gap-3">
         <div className="flex min-w-0 flex-1 flex-col gap-3">
-          <p className="text-[32px] font-semibold leading-9 text-ink">
+          <p className="text-[20px] font-medium leading-7 text-copy">
+            {metric.title} {directionLabel}
+          </p>
+          <p className="text-[32px] font-semibold leading-9 text-moss">
             {metric.number}
           </p>
-          <p className="text-[20px] font-medium leading-7 text-copy">
-            {metric.title}
-          </p>
+          {metric.subtitle ? (
+            <p className="text-base leading-6 text-copy">
+              {metric.subtitle}
+            </p>
+          ) : null}
         </div>
         <span
           className={`flex h-12 w-12 shrink-0 items-center justify-center text-moss ${
             isDown ? "rotate-90" : ""
           }`}
         >
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="h-4 w-4"
+          <img
+            src="/assets/up-aarow.svg"
+            alt=""
+            className="h-12 w-12 object-contain"
             aria-hidden="true"
-          >
-            <path d="M7 7h10v10" />
-            <path d="M7 17 17 7" />
-          </svg>
+          />
         </span>
       </div>
     </div>
@@ -385,8 +373,13 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
   };
   const pageTitle = details.pageTitle || study.title;
   const heroImage = details.heroImage ?? study.images[study.initialIndex ?? 0] ?? study.images[0];
-  const visualImages = study.images.slice(0, 4);
-  const findings = details.findings.slice(0, 6);
+  const designGallery = details.designGallery ?? [];
+  const findings = details.findings.map((finding) => finding.title);
+  const outcomeMetrics = [
+    details.metrics[0],
+    details.metrics[1],
+    details.metrics[2],
+  ].filter(Boolean);
 
   return (
     <main className="relative min-h-screen overflow-x-clip bg-canvas">
@@ -394,12 +387,24 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
       <div className="relative z-10">
         <Navbar />
 
-        <article className="pb-16 pt-8 sm:pb-24 sm:pt-12">
-          <Container className="rounded-[20px] bg-[#FFFDF8] px-6 py-8 shadow-[0_24px_80px_rgba(33,35,41,0.06)] sm:px-10 sm:py-10">
+        <article className="pb-10 pt-4 sm:pb-14 sm:pt-6">
+          <Container className="max-w-[1040px] rounded-[20px] bg-[#FFFDF8] px-6 py-8 shadow-[0_24px_80px_rgba(33,35,41,0.06)] sm:px-10 sm:py-10">
             <header>
               <h1 className="font-serif text-[2rem] font-normal leading-tight text-ink">
                 {pageTitle}
               </h1>
+              <div className="mt-4 flex flex-wrap items-center gap-3">
+                {study.categories.map((category, index) => (
+                  <div key={category} className="flex items-center gap-3">
+                    {index > 0 && (
+                      <span className="block h-1 w-1 rounded-full bg-moss" />
+                    )}
+                    <p className="text-base font-medium leading-none text-moss">
+                      {category}
+                    </p>
+                  </div>
+                ))}
+              </div>
               <div className="mt-5 flex flex-col gap-4 text-base leading-7 text-copy">
                 {details.pageDescription.split("\n\n").map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
@@ -407,7 +412,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
               </div>
             </header>
 
-            <div className="mt-8 h-[260px] overflow-hidden sm:h-[360px]">
+            <div className="mt-8 h-[260px] overflow-hidden rounded-[24px] sm:h-[360px]">
               <img
                 src={heroImage.src}
                 alt={heroImage.alt}
@@ -415,21 +420,13 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
               />
             </div>
 
-            <div className="mt-8">
-              <StickyQuickLinks links={sectionTabs} />
-            </div>
-
             <div className="mt-8 flex flex-col gap-16">
-              <SectionBlock id="context" title="Product Context" className="scroll-mt-28" >
+              <SectionBlock title="Product Context">
                 <Paragraphs text={details.context} />
               </SectionBlock>
 
-              <SectionBlock id="the-problem" title="The Problem Statement" className="scroll-mt-28">
+              <SectionBlock title="The Problem Statement">
                 <Paragraphs text={details.problemDescription} />
-                <BulletList items={details.problemAreas} className="mt-5 gap-3" />
-                <p className="mt-4 text-base leading-7 text-copy">
-                  {details.problemClosing}
-                </p>
               </SectionBlock>
 
               <div className="grid gap-5 sm:grid-cols-2">
@@ -445,61 +442,72 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                 />
               </div>
 
-              <SectionBlock id="direction" title="Problem Identification Method" className="scroll-mt-28">
+              <section className="rounded-[20px] border border-[#f0dbb1] bg-white px-8 py-6">
+                <h2 className="text-[28px] font-semibold leading-tight text-ink">
+                  Assumption
+                </h2>
+                <p className="mt-3 text-base leading-7 text-copy">
+                  {assumptionCopy}
+                </p>
+              </section>
+
+              <SectionBlock title="Validating the assumption through multiple lenses">
                 <TextGrid items={details.problemMethods} />
               </SectionBlock>
 
               <SectionBlock title="Findings">
-                <BulletList
-                  items={findings.map((finding) => finding.title)}
-                  className="gap-x-3 gap-y-3 sm:grid-cols-2"
-                />
+                <BulletList items={findings} className="gap-x-3 gap-y-3 sm:grid-cols-2" />
               </SectionBlock>
 
-              <SectionBlock id="product-goal" title="Product Goal" className="scroll-mt-28">
-                <p className="text-base leading-7 text-copy">
-                  {details.productGoal}
-                </p>
-                <div className="mt-6">
-                  <TextGrid items={details.goalItems} />
+              <SectionBlock title="Design Principles">
+                <div className="grid gap-5 md:grid-cols-3">
+                  {designPrinciples.map((principle, index) => (
+                    <div
+                      key={principle}
+                      className="rounded-[16px] border border-[#f0dbb1] bg-white px-5 py-4"
+                    >
+                      <div className="flex h-8 w-8 items-center justify-center rounded-[8px] bg-[#e5f4a8] font-serif text-[20px] leading-6 text-moss">
+                        {index + 1}
+                      </div>
+                      <p className="mt-3 text-base font-medium leading-6 text-ink">
+                        {principle}
+                      </p>
+                    </div>
+                  ))}
                 </div>
               </SectionBlock>
 
-              <SectionBlock id="solution" title="Final Solution" className="scroll-mt-28">
+              <SectionBlock title="Final Solution">
                 <p className="text-base leading-7 text-copy">
                   {details.finalSolution}
                 </p>
-                <h3 className="mt-6 text-[20px] font-semibold leading-7 text-ink">
-                  Key Issues
-                </h3>
                 <div className="mt-3">
                   <SolutionGrid items={details.solutionItems} />
                 </div>
-                <div id="process" className="mt-6 scroll-mt-28 flex gap-5 overflow-hidden p-1">
-                  <MediaPanel
-                    src={visualImages[2]?.src}
-                    alt={visualImages[2]?.alt}
-                    className="h-[360px] min-w-[76%] sm:h-[600px] sm:min-w-[92%]"
-                  />
-                  <MediaPanel
-                    src={visualImages[3]?.src}
-                    alt={visualImages[3]?.alt}
-                    className="h-[360px] min-w-[76%] sm:h-[600px] sm:min-w-[92%]"
-                  />
-                </div>
               </SectionBlock>
 
-              <SectionBlock id="outcome" title="Outcome and Metrics" className="scroll-mt-28">
-                <div className="grid gap-5 sm:grid-cols-2">
-                  {details.metrics.map((metric) => (
-                    <OutcomeCard key={metric.title} metric={metric} />
-                  ))}
-                </div>
-                <p className="mt-6 text-base leading-7 text-copy">
-                  {details.strategicOutcome}
+              <div className="flex flex-col gap-1">
+                {designGallery.length > 0 ? (
+                  <HorizontalScrollGallery images={designGallery} />
+                ) : null}
+
+                <SectionBlock title="Outcome and Metrics">
+                  <p className="mb-5 text-base leading-7 text-copy">
+                    {details.closingLine}
+                  </p>
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    {outcomeMetrics.map((metric) => (
+                      <OutcomeCard key={metric.title} metric={metric} />
+                    ))}
+                  </div>
+                </SectionBlock>
+              </div>
+
+              <SectionBlock title="Conclusion">
+                <p className="text-base leading-7 text-copy">
+                  By improving the early experience, we helped users move from confusion to confidence, driving stronger retention and better engagement. The solution was released alongside a broader UI refresh, but the retention gains came from focused product changes.
                 </p>
               </SectionBlock>
-
             </div>
           </Container>
         </article>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
@@ -12,9 +12,10 @@ const ctaIcon = "https://www.figma.com/api/mcp/asset/06c37a87-a4d2-4171-bd56-694
 const whatsAppIcon = "https://www.figma.com/api/mcp/asset/15488d21-688a-499c-b696-297527b7666e";
 const bookingUrl = "https://calendly.com/karthiklm92/30min";
 const linkedInUrl = "https://www.linkedin.com/in/dizkarthik/";
-const contactButtonClassName = "min-h-[52px] px-4 py-3";
+const contactButtonClassName = "h-12 px-5";
 const contactRowClassName =
   "contact-row-stroke relative flex flex-col overflow-hidden rounded-2xl border border-white/45 bg-white/60 px-7 py-6 shadow-[0_10px_28px_rgba(33,35,41,0.04)] backdrop-blur-xl sm:flex-row sm:items-center sm:justify-between";
+const footerStampCards = ["/assets/figma-stamp.png", "/assets/codex-stamp.png"] as const;
 
 type CopyKey = "mobile" | "email" | "linkedin";
 
@@ -59,8 +60,20 @@ function CopyableText({
   );
 }
 
+function FooterStampCard({ src }: { src: string }) {
+  return (
+    <img
+      src={src}
+      alt=""
+      className="h-[108px] w-[90px] object-contain"
+      aria-hidden="true"
+    />
+  );
+}
+
 export function FooterCtaSection() {
   const [toastMessage, setToastMessage] = useState("");
+  const [showScrollTop, setShowScrollTop] = useState(false);
   const toastTimeoutRef = useRef<number | null>(null);
 
   const copyValue = async (copyKey: CopyKey, value: string) => {
@@ -79,8 +92,25 @@ export function FooterCtaSection() {
     toastTimeoutRef.current = window.setTimeout(() => setToastMessage(""), 1800);
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    const updateScrollTopVisibility = () => {
+      setShowScrollTop(window.scrollY > 240);
+    };
+
+    updateScrollTopVisibility();
+    window.addEventListener("scroll", updateScrollTopVisibility, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", updateScrollTopVisibility);
+    };
+  }, []);
+
   return (
-    <footer id="contact" className="pb-24 pt-4 sm:pb-36">
+    <footer id="contact" className="pb-10 pt-4 sm:pb-14">
       <Container>
         <div className="grid gap-10 rounded-[20px] border border-white/45 bg-card/65 px-7 py-9 shadow-[0_18px_50px_rgba(33,35,41,0.06)] backdrop-blur-xl sm:px-16 sm:py-12 lg:grid-cols-[1fr_34.5rem] lg:items-center lg:justify-between">
           <div className="flex flex-col items-start gap-7">
@@ -107,7 +137,7 @@ export function FooterCtaSection() {
                 <Button href="tel:+918760798283" variant="secondary" className={contactButtonClassName}>
                   Call Me
                 </Button>
-                <Button href="https://wa.me/918760798283" variant="secondary" className={`${contactButtonClassName} gap-1`}>
+                <Button href="https://wa.me/918760798283" target="_blank" variant="secondary" className={`${contactButtonClassName} gap-1`}>
                   Send Hi
                   <img src={whatsAppIcon} alt="" className="h-5 w-5" />
                 </Button>
@@ -148,6 +178,57 @@ export function FooterCtaSection() {
           </div>
         </div>
       </Container>
+      <div className="overflow-hidden py-12 sm:py-16">
+        <Container className="overflow-visible">
+          <div className="flex flex-col gap-10 lg:grid lg:grid-cols-[max-content_minmax(0,1fr)] lg:items-end lg:gap-[100px]">
+            <div className="max-w-[32rem]">
+              <div className="flex gap-4">
+                {footerStampCards.map((card) => (
+                  <FooterStampCard key={card} src={card} />
+                ))}
+              </div>
+              <p className="mt-8 whitespace-nowrap text-[0.875rem] leading-[1.3] text-ink sm:text-[1rem]">
+                I designed and built this website with two close collaborators
+              </p>
+              <p className="mt-2 whitespace-nowrap font-serif text-[1.6rem] leading-none text-ink sm:text-[2.5rem]">
+                Figma and Codex in ~16h
+              </p>
+            </div>
+
+            <div className="overflow-hidden lg:min-w-0">
+              <img
+                src="/assets/KARTHIK.svg"
+                alt="Karthik"
+                className="translate-y-2 sm:ml-auto sm:w-[30rem] lg:ml-auto lg:w-full lg:max-w-[38rem]"
+              />
+            </div>
+          </div>
+        </Container>
+      </div>
+      <button
+        type="button"
+        onClick={scrollToTop}
+        aria-label="Go to top"
+        className={`fixed bottom-6 right-6 z-[180] inline-flex h-11 items-center justify-center gap-2 rounded-full border border-ink/15 bg-ink px-4 text-sm font-medium text-white shadow-[0_12px_30px_rgba(33,35,41,0.18)] transition-[opacity,transform,background-color] duration-200 hover:-translate-y-0.5 hover:bg-[#30333b] focus:outline-none focus-visible:ring-2 focus-visible:ring-moss/40 sm:bottom-8 sm:right-8 ${
+          showScrollTop
+            ? "translate-y-0 opacity-100"
+            : "pointer-events-none translate-y-3 opacity-0"
+        }`}
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="h-4 w-4"
+          aria-hidden="true"
+        >
+          <path d="m18 15-6-6-6 6" />
+        </svg>
+        <span>Scroll to Top</span>
+      </button>
       <div
         role="status"
         aria-live="polite"
