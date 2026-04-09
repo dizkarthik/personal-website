@@ -22,24 +22,22 @@ export function ContainerScroll({ children }: { children: ReactNode }) {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  const rotateX = useTransform(scrollYProgress, [0, 1], [isMobile ? 5 : 8, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [isMobile ? 0.94 : 1.04, 1]);
-  const translateY = useTransform(scrollYProgress, [0, 1], [40, 0]);
+  const rotateX = useTransform(scrollYProgress, [0, 1], [isMobile ? 8 : 16, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [isMobile ? 0.92 : 1.05, 1]);
+  const translateY = useTransform(scrollYProgress, [0, 1], [32, 0]);
 
   return (
-    <div ref={containerRef} className="relative mt-8 flex min-h-[420px] items-start justify-center sm:min-h-[520px]">
+    <div ref={containerRef} className="relative mt-8 flex min-h-[260px] items-start justify-center sm:min-h-[600px]">
       <div className="w-full [perspective:1200px]">
         <motion.div
           style={{
             rotateX,
             scale,
             translateY,
-            boxShadow:
-              "0 8px 18px rgba(33,35,41,0.08), 0 26px 48px rgba(33,35,41,0.08), 0 72px 90px rgba(33,35,41,0.05)",
           }}
-          className="mx-auto w-full overflow-hidden rounded-[22px] border-[6px] border-ink bg-ink p-2 sm:rounded-[30px] sm:p-4"
+          className="mx-auto w-full overflow-hidden rounded-[22px] sm:rounded-[30px]"
         >
-          <div className="h-[220px] w-full overflow-hidden rounded-[14px] bg-[#fffaf1] sm:h-[300px] sm:rounded-[20px]">
+          <div className="h-[260px] w-full overflow-hidden rounded-[14px] bg-[#fffaf1] sm:h-[600px] sm:rounded-[20px]">
             {children}
           </div>
         </motion.div>
