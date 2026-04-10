@@ -1,39 +1,3 @@
-import type { SVGProps } from "react";
-
-type IconProps = SVGProps<SVGSVGElement>;
-
-function SproutIcon(props: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
-      <path d="M12 20V11" />
-      <path d="M12 13C8.5 13 6 10.5 6 7c3.5 0 6 2.5 6 6Z" />
-      <path d="M12 10c0-3.5 2.5-6 6-6 0 3.5-2.5 6-6 6Z" />
-      <path d="M8 20h8" />
-    </svg>
-  );
-}
-
-function GrowthIcon(props: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
-      <path d="M5 16l4-4 3 3 7-7" />
-      <path d="M14 8h5v5" />
-      <path d="M5 5v14h14" />
-    </svg>
-  );
-}
-
-function TeamIcon(props: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
-      <path d="M16 20v-1a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v1" />
-      <path d="M9.5 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" />
-      <path d="M21 20v-1.5a3.5 3.5 0 0 0-2.6-3.38" />
-      <path d="M15.5 4.2a3.5 3.5 0 0 1 0 6.6" />
-    </svg>
-  );
-}
-
 export const navLinks = [
   { label: "Home", href: "/#home" },
   { label: "Work", href: "/#works" },
@@ -43,22 +7,19 @@ export const navLinks = [
 
 export const heroMetrics = [
   {
-    title: "Built from Scratch",
-    description: "From idea to launch",
-    icon: SproutIcon,
-    iconSrc: "/assets/built-from-scratch.svg",
+    title: "Own, Build & Ship",
+    description: "Taking ideas from zero to production with end-to-end ownership",
+    iconSrc: "/assets/own-build-ship.svg",
   },
   {
-    title: "0 → 1 → Scale",
-    description: "Built and scaled products",
-    icon: GrowthIcon,
-    iconSrc: "/assets/zero-one-scale.svg",
+    title: "B2B to B2C Experience",
+    description: "Designed for both complex systems and high-scale consumer use",
+    iconSrc: "/assets/b2b-b2cc.svg",
   },
   {
-    title: "Lean Teams, High Impact",
-    description: "Built and led lean, high-performing teams",
-    icon: TeamIcon,
-    iconSrc: "/assets/lean-teams-high-impact.svg",
+    title: "Big Teams to Lean Setups",
+    description: "Thriving in both structured orgs and fast-moving environments",
+    iconSrc: "/assets/big-lean.svg",
   },
 ];
 

@@ -14,20 +14,24 @@ type AboutStat = {
 };
 
 const profileImage = "/assets/about-me.png";
-const awardIcon =
-  "https://www.figma.com/api/mcp/asset/a736592b-b186-4bf0-b5d8-4d5e93a8edaa";
 const resumeUrl =
   "https://drive.google.com/file/d/1snwjB-4Bh393C9JX--dR9_9SPuRbV7hm/view?usp=sharing";
 
-const skills = [
-  "Vibe Coding",
-  "Figma MCP",
-  "Design to Code",
-  "Product Thinking",
-  "0 to 1 and Scale",
-  "User Research",
+const expertise = [
+  "Product Strategy",
+  "System Thinking",
+  "User Behavior Analysis",
+  "Retention & Activation",
+  "Data-Driven Decisions",
   "Design Systems",
-  "Collaboration",
+  "Interaction Design",
+  "Visual Design",
+  "UX Writing",
+  "AI Product Design",
+  "A/B Testing",
+  "Design to Code",
+  "Figma MCP",
+  "And more",
 ];
 
 const tools: Tool[] = [
@@ -50,59 +54,40 @@ const aboutStats: AboutStat[] = [
   {
     title: (
       <>
-        B2B & B2C
-        <br />
-        Experience
-      </>
-    ),
-    description: "Built products for both end users and business workflows",
-  },
-  {
-    title: (
-      <>
-        <span className="whitespace-nowrap font-sans text-base font-normal leading-8">
+        <span className="whitespace-nowrap font-sans text-[20px] font-normal leading-8">
           Founding Designer to
         </span>
         <br />
         Head Of Design
       </>
     ),
-    description: "Built and scaled the design function from scratch",
+    description: "Built and scaled the design function at Dream11",
   },
   {
     title: (
       <>
-        <span className="font-sans text-xl font-normal leading-8">0-5M+ Users</span>
-        <br />
-        <span className="whitespace-nowrap">Scaled to Millions</span>
+        Scaled to 5M+ Users
       </>
     ),
-    description: "Built high-growth products at scale",
+    description: "Helped grow Sixer to millions of users",
   },
   {
     title: (
       <>
-        <span className="whitespace-nowrap">Product, Design &</span>
-        <br />
-        Growth
+        Product, Design & Growth
       </>
     ),
-    description: "Worked across product, marketing, and ecosystem touchpoints",
+    description: "Owned key user and business touchpoints",
+  },
+  {
+    title: (
+      <>
+        Craft & Product Thinking
+      </>
+    ),
+    description: "Balancing visual quality with product impact",
   },
 ];
-
-function SkillTickerItems() {
-  return (
-    <>
-      {skills.map((skill) => (
-        <span key={skill} className="inline-flex items-center gap-3">
-          <span>{skill}</span>
-          <span className="h-1 w-1 rounded-full bg-moss" />
-        </span>
-      ))}
-    </>
-  );
-}
 
 function ToolTickerItems() {
   return (
@@ -154,23 +139,23 @@ export function ToolsProcessSection() {
     <section id="about" className="pb-16 pt-2 sm:pb-20 sm:pt-6">
       <Container>
         <div className="flex flex-col gap-6">
-          <div className="grid gap-5 lg:grid-cols-[200px_minmax(0,680px)_200px]">
-            <figure className="overflow-hidden rounded-[20px] border border-white/45 bg-card/65 shadow-[0_18px_50px_rgba(33,35,41,0.06)] backdrop-blur-xl">
-              <div className="h-[272px] overflow-hidden">
+          <div className="grid gap-5 lg:grid-cols-[215px_minmax(0,1fr)]">
+            <figure className="overflow-hidden rounded-[22px] border-4 border-white bg-card/65 shadow-[0_18px_50px_rgba(33,35,41,0.06)] backdrop-blur-xl">
+              <div className="h-[258px] overflow-hidden rounded-[18px]">
                 <img
                   src={profileImage}
                   alt="Karthik M"
-                  className="block h-full w-full object-cover object-top"
+                  className="block h-full w-full object-cover object-center"
                 />
               </div>
             </figure>
 
-            <div className="flex min-h-[240px] flex-col justify-start rounded-[16px] border border-white/45 bg-card/65 px-7 py-8 shadow-[0_18px_50px_rgba(33,35,41,0.06)] backdrop-blur-xl">
+            <div className="flex min-h-[258px] flex-col justify-center rounded-[16px] border border-white/45 bg-card/65 px-8 py-8 shadow-[0_18px_50px_rgba(33,35,41,0.06)] backdrop-blur-xl md:px-10">
               <div>
-                <h2 className="font-serif text-[1.625rem] font-normal leading-none text-ink">
+                <h2 className="font-serif text-[26px] font-normal leading-none text-ink">
                   About Me
                 </h2>
-                <p className="mt-4 text-base leading-6 text-copy">
+                <p className="mt-4 max-w-[49rem] text-base leading-7 text-copy">
                   I&apos;m drawn to complex product problems that need to feel simple,
                   intuitive, and scalable. I care about bringing clarity to ambiguity,
                   working closely with teams, and building experiences that move both
@@ -186,23 +171,6 @@ export function ToolsProcessSection() {
                 Download Resume
               </Button>
             </div>
-
-            <div className="flex min-h-[240px] flex-col justify-start rounded-[20px] border border-white/45 bg-card/65 px-6 pb-8 pt-6 shadow-[0_18px_50px_rgba(33,35,41,0.06)] backdrop-blur-xl">
-              <img
-                src={awardIcon}
-                alt=""
-                className="mb-4 h-12 w-12 object-contain"
-                aria-hidden="true"
-              />
-              <h3 className="font-serif text-[1.45rem] font-normal leading-7 text-ink">
-                Adobe Award
-                <br />
-                Winner
-              </h3>
-              <p className="mt-4 text-base leading-6 text-copy">
-                Best Portfolio Award 2017
-              </p>
-            </div>
           </div>
 
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -211,20 +179,32 @@ export function ToolsProcessSection() {
                 key={index}
                 className="min-h-[204px] rounded-[16px] border border-white/45 bg-card/65 px-8 py-7 shadow-[0_18px_50px_rgba(33,35,41,0.06)] backdrop-blur-xl"
               >
-                <h3 className="font-serif text-[1.45rem] font-normal leading-7 text-ink">
+                <h3 className="font-serif text-[24px] font-normal leading-7 text-ink">
                   {stat.title}
                 </h3>
-                <p className="mt-4 text-base leading-6 text-copy">
+                <p className="mt-4 text-base leading-[24px] text-copy">
                   {stat.description}
                 </p>
               </article>
             ))}
           </div>
 
-          <div className="flex flex-col gap-4">
-            <TickerRow direction="left-to-right">
-              <SkillTickerItems />
-            </TickerRow>
+          <div className="flex flex-col gap-6">
+            <div className="flex flex-wrap items-start gap-3">
+              <div className="px-2 pt-[6px]">
+                <h3 className="font-serif text-[24px] font-normal leading-none text-ink">
+                  Core Expertise
+                </h3>
+              </div>
+              {expertise.map((item) => (
+                <span
+                  key={item}
+                  className="inline-flex items-center rounded-full border border-[#e0d2b8] bg-[#fff8ec] px-4 pb-[10px] pt-[12px] text-base leading-none text-ink"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
 
             <TickerRow direction="right-to-left">
               <ToolTickerItems />

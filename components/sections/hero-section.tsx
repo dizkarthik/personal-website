@@ -4,6 +4,7 @@ import { experienceLogos, heroMetrics } from "@/lib/site-data";
 const portraitStampImage = "/assets/hero-image.png";
 const badgeBaseImage = "/assets/badge-base-rotate.svg";
 const badgeNumberImage = "/assets/badge-14.svg";
+const adobeAwardImage = "/assets/adobe-award.svg";
 
 function HeroYearsBadge() {
   return (
@@ -71,7 +72,7 @@ export function HeroSection() {
             </div>
           </div>
 
-          <div className="relative mx-auto h-[20rem] w-full max-w-[20rem] shrink-0 lg:mx-0">
+          <div className="relative mx-auto h-[393px] w-full max-w-[320px] shrink-0 lg:mx-0">
             <div className="absolute right-0 top-0 h-[310px] w-[260px]">
               <img
                 src={portraitStampImage}
@@ -84,13 +85,20 @@ export function HeroSection() {
             <div className="absolute -bottom-3 -left-2.5 h-40 w-40 -rotate-[7deg] sm:-bottom-5">
               <HeroYearsBadge />
             </div>
+            <img
+              src={adobeAwardImage}
+              alt="Adobe Award Winner"
+              width={125}
+              height={36}
+              className="absolute bottom-[26px] right-[3px] h-auto w-[125px] object-contain"
+            />
           </div>
         </div>
 
-        <div className="mt-[7.5rem] rounded-[20px] border border-white/45 bg-card/65 px-7 py-8 shadow-[0_18px_50px_rgba(33,35,41,0.06)] backdrop-blur-xl sm:px-16 sm:py-12">
-          <div className="flex flex-wrap items-center justify-between gap-x-12 gap-y-10">
+        <div className="mt-[7.5rem] rounded-[20px] bg-[#fffcf6] px-7 py-10 shadow-[0_18px_50px_rgba(33,35,41,0.04)] sm:px-16 sm:py-12">
+          <div className="flex flex-wrap items-center gap-x-10 gap-y-[6.0625rem]">
             {heroMetrics.map((metric) => (
-              <article key={metric.title} className="shrink-0">
+              <article key={metric.title} className="w-[272px] shrink-0">
                 <img
                   src={metric.iconSrc}
                   alt=""
@@ -99,10 +107,10 @@ export function HeroSection() {
                   className="mb-3 h-12 w-12 object-contain"
                   aria-hidden="true"
                 />
-                <h2 className="whitespace-nowrap text-2xl font-semibold leading-none text-ink">
+                <h2 className="font-serif text-[24px] font-normal leading-none text-ink">
                   {metric.title}
                 </h2>
-                <p className="mt-3 text-base leading-none text-copy">
+                <p className="mt-4 text-base leading-[30px] text-copy">
                   {metric.description}
                 </p>
               </article>

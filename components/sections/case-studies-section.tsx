@@ -239,7 +239,7 @@ export function CaseStudiesSection() {
   return (
     <section id="works" className="pb-16 pt-6 sm:pb-20">
       <Container className="max-w-[1140px]">
-        <div className="mb-10 flex flex-col gap-6">
+        <div className="mb-10 flex flex-col gap-6 px-5">
           <div>
             <h2 className="font-serif text-[2.5rem] font-normal leading-[52px] text-ink">
               Case Studies
