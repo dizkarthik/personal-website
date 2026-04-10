@@ -17,7 +17,7 @@ const profileImage = "/assets/about-me.png";
 const awardIcon =
   "https://www.figma.com/api/mcp/asset/a736592b-b186-4bf0-b5d8-4d5e93a8edaa";
 const resumeUrl =
-  "https://drive.google.com/file/d/18jIcINZE1Y5NgtuFuKycQwAzGhoYqaQE/view";
+  "https://drive.google.com/file/d/1snwjB-4Bh393C9JX--dR9_9SPuRbV7hm/view?usp=sharing";
 
 const skills = [
   "Vibe Coding",

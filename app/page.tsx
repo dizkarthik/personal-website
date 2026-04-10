@@ -13,9 +13,9 @@ export default function HomePage() {
       <div className="relative z-10">
         <Navbar />
         <HeroSection />
-        <BuildProcessSection />
         <CaseStudiesSection />
         <ToolsProcessSection />
+        <BuildProcessSection />
         <FooterCtaSection />
       </div>
     </main>
