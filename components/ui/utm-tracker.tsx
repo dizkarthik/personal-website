@@ -92,6 +92,20 @@ function syncClarityTags(prefix: "first" | "latest", data: UTMData | null) {
   setClarityTag(`${prefix}_landing_path`, data.landingPath);
 }
 
+function pushClarityState({
+  pathname,
+  firstTouch,
+  latestTouch,
+}: {
+  pathname: string;
+  firstTouch: UTMData | null;
+  latestTouch: UTMData | null;
+}) {
+  syncClarityTags("first", firstTouch);
+  syncClarityTags("latest", latestTouch);
+  setClarityTag("current_path", pathname);
+}
+
 export function UTMTracker() {
   const pathname = usePathname();
 
@@ -111,9 +125,39 @@ export function UTMTracker() {
       writeStoredUTM(LATEST_TOUCH_STORAGE_KEY, currentTouch);
     }
 
-    syncClarityTags("first", currentTouch && !firstTouch ? currentTouch : firstTouch);
-    syncClarityTags("latest", currentTouch ?? latestTouch);
-    setClarityTag("current_path", pathname);
+    const resolvedFirstTouch =
+      currentTouch && !firstTouch ? currentTouch : firstTouch;
+    const resolvedLatestTouch = currentTouch ?? latestTouch;
+
+    pushClarityState({
+      pathname,
+      firstTouch: resolvedFirstTouch,
+      latestTouch: resolvedLatestTouch,
+    });
+
+    if (typeof window.clarity === "function") {
+      return;
+    }
+
+    let attempts = 0;
+    const retryInterval = window.setInterval(() => {
+      attempts += 1;
+
+      if (typeof window.clarity === "function") {
+        pushClarityState({
+          pathname,
+          firstTouch: resolvedFirstTouch,
+          latestTouch: resolvedLatestTouch,
+        });
+        window.clearInterval(retryInterval);
+      } else if (attempts >= 20) {
+        window.clearInterval(retryInterval);
+      }
+    }, 500);
+
+    return () => {
+      window.clearInterval(retryInterval);
+    };
   }, [pathname]);
 
   return null;

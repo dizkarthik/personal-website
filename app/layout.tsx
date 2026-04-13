@@ -6,7 +6,10 @@ import { UTMTracker } from "@/components/ui/utm-tracker";
 
 import "./globals.css";
 
-const clarityProjectId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID;
+const DEFAULT_CLARITY_PROJECT_ID = "w9ci2bigro";
+const clarityProjectId =
+  process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID?.trim() ||
+  DEFAULT_CLARITY_PROJECT_ID;
 
 export const metadata: Metadata = {
   title: "Karthik M | Product Designer | Scalable Digital Products",
