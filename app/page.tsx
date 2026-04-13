@@ -2,6 +2,7 @@ import { BuildProcessSection } from "@/components/sections/build-process-section
 import { CaseStudiesSection } from "@/components/sections/case-studies-section";
 import { FooterCtaSection } from "@/components/sections/footer-cta-section";
 import { HeroSection } from "@/components/sections/hero-section";
+import { ImpactNumbersSection } from "@/components/sections/impact-numbers-section";
 import { Navbar } from "@/components/sections/navbar";
 import { ToolsProcessSection } from "@/components/sections/tools-process-section";
 import { InteractiveBackground } from "@/components/ui/interactive-background";
@@ -14,6 +15,7 @@ export default function HomePage() {
         <Navbar />
         <HeroSection />
         <CaseStudiesSection />
+        <ImpactNumbersSection />
         <ToolsProcessSection />
         <BuildProcessSection />
         <FooterCtaSection />

@@ -22,6 +22,88 @@ body {
   animation: badge-spin-clockwise 120s linear infinite;
 }
 
+@keyframes hero-status-pill-drift {
+  0% {
+    background-position:
+      0 0,
+      0% 50%;
+    box-shadow: 0 8px 20px rgba(90, 143, 34, 0.08);
+    transform: translateY(0);
+  }
+
+  50% {
+    background-position:
+      0 0,
+      100% 50%;
+    box-shadow: 0 10px 24px rgba(90, 143, 34, 0.12);
+    transform: translateY(-1px);
+  }
+
+  100% {
+    background-position:
+      0 0,
+      200% 50%;
+    box-shadow: 0 8px 20px rgba(90, 143, 34, 0.08);
+    transform: translateY(0);
+  }
+}
+
+.hero-status-pill {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(#e5f4a8, #e5f4a8) padding-box,
+    linear-gradient(
+      90deg,
+      rgba(90, 143, 34, 0.26) 0%,
+      rgba(255, 255, 255, 0.88) 45%,
+      rgba(90, 143, 34, 0.42) 55%,
+      rgba(90, 143, 34, 0.26) 100%
+    ) border-box;
+  background-size:
+    100% 100%,
+    220% 100%;
+  animation: hero-status-pill-drift 7s ease-in-out infinite;
+  will-change: transform, box-shadow, background-position;
+}
+
+@keyframes hero-status-pill-shine {
+  0% {
+    transform: translateX(-160%) skewX(-22deg);
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 0.12;
+  }
+
+  32% {
+    transform: translateX(220%) skewX(-22deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(220%) skewX(-22deg);
+    opacity: 0;
+  }
+}
+
+.hero-status-pill::after {
+  content: "";
+  position: absolute;
+  inset: -20% auto -20% -35%;
+  width: 34%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.42) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+  animation: hero-status-pill-shine 6.8s ease-in-out infinite;
+}
+
 @keyframes build-line-gradient-drift {
   from {
     background-position: 0 100%;
@@ -71,6 +153,20 @@ body {
 
 .my-stacks-ticker-rtl {
   animation: my-stacks-ticker-right-to-left 85s linear infinite;
+}
+
+@keyframes impact-numbers-ticker-loop {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 10px));
+  }
+}
+
+.impact-numbers-ticker {
+  animation: impact-numbers-ticker-loop 68s linear infinite;
 }
 
 .my-stacks-fade {

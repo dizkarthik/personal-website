@@ -38,6 +38,44 @@ export const experienceLogos = [
   },
 ];
 
+export const impactNumbers = [
+  {
+    title: "Scaled to 5M+ Users",
+    subtitle: "from 0 base",
+    brand: "sixer" as const,
+  },
+  {
+    title: "40% SU-D Funnel",
+    subtitle: "from 15% base",
+    brand: "sixer" as const,
+  },
+  {
+    title: "Led Full UI Revamp",
+    subtitle: "for ServiceDesk Plus",
+    brand: "zoho" as const,
+  },
+  {
+    title: "40% Improvement",
+    subtitle: "in Time to First Workflow",
+    brand: "gtm" as const,
+  },
+  {
+    title: "-28% Resolution Time",
+    subtitle: "from 18% base",
+    brand: "zoho" as const,
+  },
+  {
+    title: "+55Cr Increase in",
+    subtitle: "Trading Volume",
+    brand: "sixer" as const,
+  },
+  {
+    title: "Activation Improved",
+    subtitle: "by revamped onboarding",
+    brand: "gtm" as const,
+  },
+];
+
 export const buildSteps = [
   {
     title: "Diagnose Gaps",
@@ -137,7 +175,7 @@ export const caseStudies = [
   {
     slug: "nrev-onboarding-retention",
     categories: ["Sixer", "Mobile", "Retention"],
-    title: "Fixing early drop-offs by improving week one retention by 27%",
+    title: "How we improved week one retention by 27% and unlocked ₹55 Cr in trading volume",
     company: "Sixer",
     role: "Product Design Lead",
     scope: "1G Trading, Retention, IPL Activation",
@@ -147,7 +185,7 @@ export const caseStudies = [
     overview:
       "A focused first-week retention redesign for Sixer's IPL acquisition window, shaped around product clarity, trading confidence, and measurable activation improvements.",
     details: {
-      pageTitle: "Fixing early drop-offs by improving week one retention by 27%",
+      pageTitle: "How we improved week one retention by 27% and unlocked ₹55 Cr in trading volume",
       pageDescription:
         "Users were signing up, but dropping off after their first trade. We redesigned the early journey to reduce friction, build trust, and improve week one retention.",
       context:
@@ -295,23 +333,27 @@ export const caseStudies = [
       designGallery: [
         {
           src: "/assets/case-study-1-design-1.png",
-          alt: "Old design exploration showing player and match discovery layout",
+          alt: "Old and new UI comparison for the Sixer discovery experience",
         },
         {
           src: "/assets/case-study-1-design-2.png",
-          alt: "Old design critique showing weak connection between players and matches",
+          alt: "Problem breakdown of the old Sixer discovery experience",
         },
         {
           src: "/assets/case-study-1-design-3.png",
-          alt: "Low fidelity explorations for match and player modules",
+          alt: "Low fidelity explorations for the redesigned Sixer modules",
         },
         {
           src: "/assets/case-study-1-design-4.png",
-          alt: "New design exploration showing stronger information hierarchy and relevance",
+          alt: "Annotated card showing improved information hierarchy and decision support",
         },
         {
           src: "/assets/case-study-1-design-5.png",
-          alt: "Final design selected after testing",
+          alt: "Annotated tab structure and discovery-to-decision transition for the final design",
+        },
+        {
+          src: "/assets/case-study-1-design-6.png",
+          alt: "Final design comparison with before and after insights table",
         },
       ],
     },

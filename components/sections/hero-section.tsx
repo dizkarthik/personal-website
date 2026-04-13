@@ -44,9 +44,16 @@ export function HeroSection() {
                   <span className="block">I design and scale complex</span>
                   <span className="block">digital products.</span>
                 </h1>
-                <div className="inline-flex rounded-full bg-[#e5f4a8] px-4 pb-2 pt-2.5">
+                <div className="hero-status-pill inline-flex items-center gap-2 rounded-full px-4 pb-3 pt-[14px]">
                   <p className="text-base font-semibold uppercase leading-none text-moss">
                     OPEN TO REMOTE WORK
+                  </p>
+                  <span
+                    className="h-3.5 w-px bg-moss/25"
+                    aria-hidden="true"
+                  />
+                  <p className="text-base font-semibold uppercase leading-none text-moss">
+                    IMMEDIATE JOIN
                   </p>
                 </div>
               </div>
@@ -90,7 +97,7 @@ export function HeroSection() {
               alt="Adobe Award Winner"
               width={125}
               height={36}
-              className="absolute bottom-[26px] right-[3px] h-auto w-[125px] object-contain"
+              className="absolute bottom-[26px] right-[13px] h-auto w-[125px] object-contain"
             />
           </div>
         </div>
