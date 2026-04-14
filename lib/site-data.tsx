@@ -175,7 +175,7 @@ export const caseStudies = [
   {
     slug: "nrev-onboarding-retention",
     categories: ["Sixer", "Mobile", "Retention"],
-    title: "How we improved week one retention by 27% and unlocked ₹55 Cr in trading volume",
+    title: "Improved week one retention by 27% and unlocked ₹55 Cr",
     company: "Sixer",
     role: "Product Design Lead",
     scope: "1G Trading, Retention, IPL Activation",
@@ -185,7 +185,7 @@ export const caseStudies = [
     overview:
       "A focused first-week retention redesign for Sixer's IPL acquisition window, shaped around product clarity, trading confidence, and measurable activation improvements.",
     details: {
-      pageTitle: "How we improved week one retention by 27% and unlocked ₹55 Cr in trading volume",
+      pageTitle: "Improved week one retention by 27% and unlocked ₹55 Cr",
       pageDescription:
         "Users were signing up, but dropping off after their first trade. We redesigned the early journey to reduce friction, build trust, and improve week one retention.",
       context:
