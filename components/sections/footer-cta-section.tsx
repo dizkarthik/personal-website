@@ -112,7 +112,7 @@ export function FooterCtaSection() {
   return (
     <footer id="contact" className="pb-10 pt-4 sm:pb-14">
       <Container>
-        <div className="grid gap-10 rounded-[20px] border border-white/45 bg-card/65 px-7 py-9 shadow-[0_18px_50px_rgba(33,35,41,0.06)] backdrop-blur-xl sm:px-16 sm:py-12 lg:grid-cols-[1fr_34.5rem] lg:items-center lg:justify-between">
+        <div className="grid gap-10 rounded-[20px] border border-white/45 bg-card/65 px-7 py-9 shadow-[0_18px_50px_rgba(33,35,41,0.06)] backdrop-blur-xl sm:px-6 sm:py-12 lg:grid-cols-[1fr_34.5rem] lg:items-center lg:justify-between">
           <div className="flex flex-col items-start gap-7">
             <img src={ctaIcon} alt="" className="h-16 w-16 object-contain" />
             <h2 className="font-serif text-[2.5rem] font-normal leading-[1.25] text-ink">
@@ -180,7 +180,7 @@ export function FooterCtaSection() {
       </Container>
       <div className="overflow-hidden py-12 sm:py-16">
         <Container className="overflow-visible">
-          <div className="flex flex-col gap-10 lg:grid lg:grid-cols-[max-content_minmax(0,1fr)] lg:items-end lg:gap-[100px]">
+          <div className="flex flex-col gap-10 px-0 sm:px-6 lg:grid lg:grid-cols-[max-content_minmax(0,1fr)] lg:items-end lg:gap-[100px]">
             <div className="max-w-[32rem]">
               <div className="flex gap-4">
                 {footerStampCards.map((card) => (
@@ -195,13 +195,13 @@ export function FooterCtaSection() {
               </p>
             </div>
 
-            <div className="overflow-hidden lg:min-w-0">
-              <img
-                src="/assets/KARTHIK.svg"
-                alt="Karthik"
-                className="translate-y-2 sm:ml-auto sm:w-[30rem] lg:ml-auto lg:w-full lg:max-w-[38rem]"
-              />
-            </div>
+          <div className="flex overflow-visible lg:min-w-0 lg:items-end lg:justify-end">
+            <img
+              src="/assets/design-for-love.svg"
+              alt="Karthik"
+              className="-translate-y-[3px] h-auto w-full sm:ml-auto sm:max-w-[18rem] lg:h-[125px] lg:w-auto lg:max-w-none lg:translate-x-3"
+            />
+          </div>
           </div>
         </Container>
       </div>

@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 import { FooterCtaSection } from "@/components/sections/footer-cta-section";
 import { Navbar } from "@/components/sections/navbar";
@@ -347,24 +347,38 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: CaseStudyPageProps) {
   const { slug } = await params;
-  const study = caseStudies.find((item) => item.slug === slug);
+  const study = caseStudies.find(
+    (item) => item.slug === slug || item.legacySlugs?.includes(slug),
+  );
 
   if (!study) {
     return {};
   }
 
+  const details = {
+    ...fallbackDetails,
+    ...study.details,
+  };
+  const pageTitle = details.pageTitle || study.title;
+
   return {
-    title: `${study.title} | Karthik`,
+    title: `${pageTitle} | Karthik`,
     description: study.overview,
   };
 }
 
 export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
   const { slug } = await params;
-  const study = caseStudies.find((item) => item.slug === slug);
+  const study = caseStudies.find(
+    (item) => item.slug === slug || item.legacySlugs?.includes(slug),
+  );
 
   if (!study) {
     notFound();
+  }
+
+  if (slug !== study.slug) {
+    redirect(`/case-studies/${study.slug}`);
   }
 
   const details = {

@@ -173,9 +173,11 @@ const caseStudyPlaceholderSlides = [
 
 export const caseStudies = [
   {
-    slug: "nrev-onboarding-retention",
+    slug: "fixing-early-drop-offs-retention-trading-volume",
+    legacySlugs: ["nrev-onboarding-retention"],
     categories: ["Sixer", "Mobile", "Retention"],
-    title: "Improved week one retention by 27% and unlocked ₹55 Cr",
+    title:
+      "Fixing early drop-offs to improve week one retention by 27% and drive ₹55 Cr in trading volume",
     company: "Sixer",
     role: "Product Design Lead",
     scope: "1G Trading, Retention, IPL Activation",
@@ -185,7 +187,8 @@ export const caseStudies = [
     overview:
       "A focused first-week retention redesign for Sixer's IPL acquisition window, shaped around product clarity, trading confidence, and measurable activation improvements.",
     details: {
-      pageTitle: "Improved week one retention by 27% and unlocked ₹55 Cr",
+      pageTitle:
+        "Fixing early drop-offs to improve week one retention by 27% and drive ₹55 Cr in trading volume",
       pageDescription:
         "Users were signing up, but dropping off after their first trade. We redesigned the early journey to reduce friction, build trust, and improve week one retention.",
       context:
