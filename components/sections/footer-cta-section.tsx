@@ -16,16 +16,12 @@ type CopyKey = "mobile" | "email" | "linkedin";
 
 function SectionSparkIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" className="h-16 w-16 text-moss" aria-hidden="true">
-      <path
-        d="M12 2.5 13.8 8.2 19.5 10 13.8 11.8 12 17.5 10.2 11.8 4.5 10 10.2 8.2 12 2.5Z"
-        fill="currentColor"
-        fillOpacity="0.14"
-        stroke="currentColor"
-        strokeWidth="1.4"
-      />
-      <path d="M18.5 3.8 19.2 6l2.2.7-2.2.7-.7 2.2-.7-2.2-2.2-.7 2.2-.7.7-2.2Z" fill="currentColor" />
-    </svg>
+    <img
+      src="/assets/connect.svg"
+      alt=""
+      className="h-16 w-16 object-contain"
+      aria-hidden="true"
+    />
   );
 }
 
@@ -58,9 +54,12 @@ function LinkedInIcon() {
 
 function WhatsAppIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5 text-moss" aria-hidden="true">
-      <path d="M20.5 12a8.5 8.5 0 0 1-12.57 7.49L3.5 20.5l1.1-4.2A8.5 8.5 0 1 1 20.5 12Zm-8.52-5.1c-.44 0-.9.2-1.18.69l-.56.99c-.2.37-.17.83.08 1.16l.28.38a10.5 10.5 0 0 0 4.29 3.5l.44.17c.4.16.87.05 1.16-.27l.78-.88c.34-.38.43-.92.19-1.38l-.19-.36a1 1 0 0 0-1.18-.5l-1.24.35a8.3 8.3 0 0 1-2.06-1.68l.33-1.14a1 1 0 0 0-.47-1.16l-.43-.25a1.3 1.3 0 0 0-.64-.18Z"/>
-    </svg>
+    <img
+      src="/assets/whatsapp.svg"
+      alt=""
+      className="h-5 w-5 object-contain"
+      aria-hidden="true"
+    />
   );
 }
 
@@ -157,7 +156,7 @@ export function FooterCtaSection() {
   return (
     <footer id="contact" className="pb-10 pt-4 sm:pb-14">
       <Container>
-        <div className="grid gap-10 rounded-[20px] border border-white/45 bg-card/65 px-7 py-9 shadow-[0_18px_50px_rgba(33,35,41,0.06)] backdrop-blur-xl sm:px-6 sm:py-12 lg:grid-cols-[1fr_34.5rem] lg:items-center lg:justify-between">
+        <div className="grid gap-10 rounded-[20px] border border-white/45 bg-card/65 px-12 py-9 shadow-[0_18px_50px_rgba(33,35,41,0.06)] backdrop-blur-xl sm:px-[60px] sm:py-12 lg:grid-cols-[1fr_34.5rem] lg:items-center lg:justify-between">
           <div className="flex flex-col items-start gap-7">
             <SectionSparkIcon />
             <h2 className="font-serif text-[2.5rem] font-normal leading-[1.25] text-ink">

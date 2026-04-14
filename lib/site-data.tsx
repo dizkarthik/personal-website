@@ -26,13 +26,13 @@ export const heroMetrics = [
 export const experienceLogos = [
   {
     alt: "Dream11 logo",
-    src: "/assets/dream11-wordmark.svg",
+    src: "/assets/dream11-logo.svg",
     width: 175.78,
     height: 48,
   },
   {
     alt: "Zoho logo",
-    src: "/assets/Zoho.png",
+    src: "/assets/zoho-logo.svg",
     width: 112.73,
     height: 48,
   },

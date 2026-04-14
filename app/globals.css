@@ -104,6 +104,26 @@ body {
   animation: hero-status-pill-shine 6.8s ease-in-out infinite;
 }
 
+@keyframes hero-typewriter-caret-blink {
+  0%,
+  45% {
+    opacity: 1;
+  }
+
+  55%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.hero-typewriter {
+  white-space: nowrap;
+}
+
+.hero-typewriter-caret {
+  animation: hero-typewriter-caret-blink 0.9s steps(1) infinite;
+}
+
 @keyframes build-line-gradient-drift {
   from {
     background-position: 0 100%;

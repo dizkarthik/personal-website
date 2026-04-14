@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useMemo, useState } from "react";
+
 import { Container } from "@/components/ui/container";
 import { experienceLogos, heroMetrics } from "@/lib/site-data";
 
@@ -5,10 +9,14 @@ const portraitStampImage = "/assets/hero-image.png";
 const badgeBaseImage = "/assets/badge-base-rotate.svg";
 const badgeNumberImage = "/assets/badge-14.svg";
 const adobeAwardImage = "/assets/adobe-award.svg";
+const rotatingWords = ["business impact", "measurable outcomes"] as const;
 
 function HeroYearsBadge() {
   return (
-    <div className="relative h-full w-full" aria-label="14 plus years building and scaling products">
+    <div
+      className="relative h-full w-full"
+      aria-label="14 plus years building and scaling products"
+    >
       <img
         src={badgeBaseImage}
         alt=""
@@ -29,41 +37,95 @@ function HeroYearsBadge() {
   );
 }
 
+function RotatingHeroWord() {
+  const [wordIndex, setWordIndex] = useState(0);
+  const [displayText, setDisplayText] = useState<string>(rotatingWords[0]);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  const activeWord = rotatingWords[wordIndex];
+
+  useEffect(() => {
+    let timeoutId: number;
+
+    if (!isDeleting && displayText === activeWord) {
+      timeoutId = window.setTimeout(() => setIsDeleting(true), 1400);
+      return () => window.clearTimeout(timeoutId);
+    }
+
+    if (isDeleting && displayText.length === 0) {
+      setIsDeleting(false);
+      setWordIndex((currentIndex) => (currentIndex + 1) % rotatingWords.length);
+      return;
+    }
+
+    timeoutId = window.setTimeout(() => {
+      if (isDeleting) {
+        setDisplayText(activeWord.slice(0, displayText.length - 1));
+      } else {
+        setDisplayText(activeWord.slice(0, displayText.length + 1));
+      }
+    }, isDeleting ? 48 : 92);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [activeWord, displayText, isDeleting]);
+
+  const measuredWidth = useMemo(
+    () =>
+      rotatingWords.reduce(
+        (longestWord, word) => (word.length > longestWord.length ? word : longestWord),
+        rotatingWords[0],
+      ),
+    [],
+  );
+
+  return (
+    <span
+      className="hero-typewriter relative inline-flex items-center text-[50px] text-[#5f9a20] leading-[60px]"
+      aria-label={activeWord}
+    >
+      <span className="invisible">{measuredWidth}</span>
+      <span className="absolute left-0 top-0 inline-flex items-center whitespace-nowrap">
+        <span>{displayText}</span>
+        <span className="hero-typewriter-caret ml-1 inline-block h-[0.9em] w-px bg-current" />
+      </span>
+    </span>
+  );
+}
+
 export function HeroSection() {
   return (
     <section id="home" className="pb-10 pt-9 sm:pb-16 sm:pt-[3.75rem] lg:pt-[6.25rem]">
       <Container>
-        <div className="grid gap-12 px-0 sm:px-6 lg:grid-cols-[minmax(0,606px)_20rem] lg:items-start lg:justify-between lg:gap-12">
-          <div className="flex max-w-[606px] flex-col gap-11">
-            <div className="flex flex-col gap-5">
-              <p className="text-[2rem] font-normal leading-none text-moss">
-                Hi, I&apos;m Karthik
-              </p>
-              <div className="flex flex-col items-start gap-7">
-                <h1 className="max-w-[606px] font-serif text-[3rem] font-normal leading-[62px] text-ink">
-                  <span className="block">I design and scale complex</span>
-                  <span className="block">digital products.</span>
-                </h1>
-                <div className="hero-status-pill inline-flex items-center gap-2 rounded-full px-4 pb-3 pt-[14px]">
-                  <p className="text-base font-semibold uppercase leading-none text-moss">
-                    OPEN TO REMOTE WORK
-                  </p>
-                  <span
-                    className="h-3.5 w-px bg-moss/25"
-                    aria-hidden="true"
-                  />
-                  <p className="text-base font-semibold uppercase leading-none text-moss">
-                    IMMEDIATE JOIN
-                  </p>
-                </div>
+        <div className="grid gap-12 px-0 sm:px-6 lg:grid-cols-[minmax(0,623px)_20rem] lg:items-start lg:justify-between lg:gap-[5.8125rem]">
+          <div className="flex max-w-[623px] flex-col gap-11">
+            <div className="flex flex-col gap-11">
+              <div className="hero-status-pill inline-flex items-center gap-2 self-start rounded-full px-4 pb-2 pt-[10px]">
+                <p className="text-[14px] font-medium uppercase leading-none text-moss">
+                  OPEN TO REMOTE WORK
+                </p>
+                <span className="h-3 w-px bg-moss/25" aria-hidden="true" />
+                <p className="text-[14px] font-medium uppercase leading-none text-moss">
+                  IMMEDIATE JOIN
+                </p>
               </div>
+
+              <h1 className="max-w-[606px] font-serif text-[2.875rem] font-normal leading-[60px] text-ink">
+                <span className="block">I design and scale product</span>
+                <span className="block">experiences that deliver</span>
+                <span className="block">
+                  <span className="italic">
+                    <RotatingHeroWord />
+                  </span>
+                </span>
+              </h1>
             </div>
 
-            <div className="flex flex-col gap-5">
-              <p className="text-base leading-[34px] text-copy">
-                Built and scaled products in high-growth environments.
+            <div className="flex flex-col gap-7">
+              <p className="max-w-[503px] text-[1.125rem] leading-[30px] text-copy">
+                I design end-to-end AI, B2B, and B2C products, built and
+                scaled in high-growth environments.
               </p>
-              <div className="flex flex-wrap items-center gap-8 sm:gap-20">
+              <div className="flex flex-wrap items-center gap-x-20 gap-y-6">
                 {experienceLogos.map((logo) => (
                   <img
                     key={logo.alt}
