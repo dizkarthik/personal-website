@@ -11,13 +11,6 @@ import { cn } from "@/lib/utils";
 type CaseStudy = (typeof caseStudies)[number];
 type AdditionalCaseStudyCard = (typeof additionalCaseStudyCards)[number];
 
-const readCaseStudyIcon =
-  "https://www.figma.com/api/mcp/asset/ea77c8c0-1f07-449d-9880-0b3135f59431";
-const previousIcon =
-  "https://www.figma.com/api/mcp/asset/9ca4e264-4254-4ac0-a3c7-5c9d309e269c";
-const nextIcon =
-  "https://www.figma.com/api/mcp/asset/442803ef-a424-491f-a464-a4156992f4f7";
-
 function ClockIcon() {
   return (
     <svg
@@ -32,6 +25,24 @@ function ClockIcon() {
     >
       <circle cx="12" cy="12" r="8.5" />
       <path d="M12 7.8v4.7l3.1 1.8" />
+    </svg>
+  );
+}
+
+function ArrowRightIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M5 12h14" />
+      <path d="m13 6 6 6-6 6" />
     </svg>
   );
 }
@@ -81,12 +92,7 @@ function CaseStudyInfoCard({ study }: { study: CaseStudy }) {
 
         <div className="inline-flex w-fit items-center gap-1 text-base font-semibold leading-none text-moss transition-colors duration-200 group-hover/case:text-[#6aa931]">
           View Case Study
-          <img
-            src={readCaseStudyIcon}
-            alt=""
-            className="h-6 w-6 transition-transform duration-300 ease-out group-hover/case:translate-x-1"
-            aria-hidden="true"
-          />
+          <ArrowRightIcon className="h-5 w-5 transition-transform duration-300 ease-out group-hover/case:translate-x-1" />
         </div>
       </div>
     </Link>
@@ -112,12 +118,9 @@ function CarouselButton({
       className="relative h-12 w-12 overflow-hidden rounded-full bg-black/60 transition-[background-color,transform] duration-200 hover:scale-[1.03] hover:bg-black/70"
       aria-label={isPrevious ? "Show previous case study image" : "Show next case study image"}
     >
-      <img
-        src={isPrevious ? previousIcon : nextIcon}
-        alt=""
-        aria-hidden="true"
+      <ArrowRightIcon
         className={cn(
-          "absolute left-1/2 top-1/2 h-8 w-8 -translate-x-1/2 -translate-y-1/2",
+          "absolute left-1/2 top-1/2 h-5 w-5 -translate-x-1/2 -translate-y-1/2 text-white",
           isPrevious && "rotate-180",
         )}
       />

@@ -5,11 +5,6 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 
-const contactIcon = "https://www.figma.com/api/mcp/asset/07e5a6ac-5198-4990-98e2-c53c2ee484a6";
-const mailIcon = "https://www.figma.com/api/mcp/asset/cff7a77b-37ec-4ca8-8cfd-b9c57a048f0b";
-const linkedInIcon = "https://www.figma.com/api/mcp/asset/2663e4c7-023e-4e9a-973c-5188c3273b6c";
-const ctaIcon = "https://www.figma.com/api/mcp/asset/06c37a87-a4d2-4171-bd56-69439facb6ab";
-const whatsAppIcon = "https://www.figma.com/api/mcp/asset/15488d21-688a-499c-b696-297527b7666e";
 const bookingUrl = "https://calendly.com/karthiklm92/30min";
 const linkedInUrl = "https://www.linkedin.com/in/dizkarthik/";
 const contactButtonClassName = "h-12 px-5";
@@ -18,6 +13,56 @@ const contactRowClassName =
 const footerStampCards = ["/assets/figma-stamp.png", "/assets/codex-stamp.png"] as const;
 
 type CopyKey = "mobile" | "email" | "linkedin";
+
+function SectionSparkIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="h-16 w-16 text-moss" aria-hidden="true">
+      <path
+        d="M12 2.5 13.8 8.2 19.5 10 13.8 11.8 12 17.5 10.2 11.8 4.5 10 10.2 8.2 12 2.5Z"
+        fill="currentColor"
+        fillOpacity="0.14"
+        stroke="currentColor"
+        strokeWidth="1.4"
+      />
+      <path d="M18.5 3.8 19.2 6l2.2.7-2.2.7-.7 2.2-.7-2.2-2.2-.7 2.2-.7.7-2.2Z" fill="currentColor" />
+    </svg>
+  );
+}
+
+function ContactIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="h-6 w-6 text-moss" aria-hidden="true">
+      <path d="M8.5 5.5h7a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2Z" strokeWidth="1.7"/>
+      <path d="M10 8.5h4" strokeWidth="1.7" strokeLinecap="round"/>
+      <path d="M12 15.7h.01" strokeWidth="2.2" strokeLinecap="round"/>
+    </svg>
+  );
+}
+
+function MailIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="h-6 w-6 text-moss" aria-hidden="true">
+      <rect x="4" y="6" width="16" height="12" rx="2.5" strokeWidth="1.7"/>
+      <path d="m6 8 6 5 6-5" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+}
+
+function LinkedInIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6 text-moss" aria-hidden="true">
+      <path d="M6.7 8.4a1.55 1.55 0 1 0 0-3.1 1.55 1.55 0 0 0 0 3.1ZM5.2 9.8h3v9h-3v-9ZM10 9.8h2.9v1.2h.04c.4-.77 1.4-1.58 2.88-1.58 3.08 0 3.65 2.03 3.65 4.67v4.71h-3v-4.17c0-.99-.02-2.27-1.38-2.27-1.39 0-1.6 1.08-1.6 2.2v4.24h-3v-9Z"/>
+    </svg>
+  );
+}
+
+function WhatsAppIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5 text-moss" aria-hidden="true">
+      <path d="M20.5 12a8.5 8.5 0 0 1-12.57 7.49L3.5 20.5l1.1-4.2A8.5 8.5 0 1 1 20.5 12Zm-8.52-5.1c-.44 0-.9.2-1.18.69l-.56.99c-.2.37-.17.83.08 1.16l.28.38a10.5 10.5 0 0 0 4.29 3.5l.44.17c.4.16.87.05 1.16-.27l.78-.88c.34-.38.43-.92.19-1.38l-.19-.36a1 1 0 0 0-1.18-.5l-1.24.35a8.3 8.3 0 0 1-2.06-1.68l.33-1.14a1 1 0 0 0-.47-1.16l-.43-.25a1.3 1.3 0 0 0-.64-.18Z"/>
+    </svg>
+  );
+}
 
 function CopyableText({
   copyKey,
@@ -114,7 +159,7 @@ export function FooterCtaSection() {
       <Container>
         <div className="grid gap-10 rounded-[20px] border border-white/45 bg-card/65 px-7 py-9 shadow-[0_18px_50px_rgba(33,35,41,0.06)] backdrop-blur-xl sm:px-6 sm:py-12 lg:grid-cols-[1fr_34.5rem] lg:items-center lg:justify-between">
           <div className="flex flex-col items-start gap-7">
-            <img src={ctaIcon} alt="" className="h-16 w-16 object-contain" />
+            <SectionSparkIcon />
             <h2 className="font-serif text-[2.5rem] font-normal leading-[1.25] text-ink">
               Let&apos;s build something meaningful together.
             </h2>
@@ -124,7 +169,7 @@ export function FooterCtaSection() {
           <div className="flex flex-col gap-4">
             <div className={`${contactRowClassName} gap-12`}>
               <div className="relative z-10 flex items-center gap-4 text-base font-medium text-ink">
-                <img src={contactIcon} alt="" className="h-6 w-6 object-contain" />
+                <ContactIcon />
                 <CopyableText
                   copyKey="mobile"
                   value="+918760798283"
@@ -139,14 +184,14 @@ export function FooterCtaSection() {
                 </Button>
                 <Button href="https://wa.me/918760798283" target="_blank" variant="secondary" className={`${contactButtonClassName} gap-1`}>
                   Send Hi
-                  <img src={whatsAppIcon} alt="" className="h-5 w-5" />
+                  <WhatsAppIcon />
                 </Button>
               </div>
             </div>
 
             <div className={`${contactRowClassName} gap-5`}>
               <div className="relative z-10 flex items-center gap-4 text-base font-medium text-ink">
-                <img src={mailIcon} alt="" className="h-6 w-6 object-contain" />
+                <MailIcon />
                 <CopyableText
                   copyKey="email"
                   value="hello@dizkarthik.com"
@@ -162,7 +207,7 @@ export function FooterCtaSection() {
 
             <div className={`${contactRowClassName} gap-5`}>
               <div className="relative z-10 flex items-center gap-4 text-base font-medium text-ink">
-                <img src={linkedInIcon} alt="" className="h-6 w-6 object-contain" />
+                <LinkedInIcon />
                 <CopyableText
                   copyKey="linkedin"
                   value={linkedInUrl}
