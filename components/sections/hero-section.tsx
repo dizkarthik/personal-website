@@ -80,7 +80,7 @@ function RotatingHeroWord() {
 
   return (
     <span
-      className="hero-typewriter relative inline-flex items-center text-[50px] text-[#5f9a20] leading-[60px]"
+      className="hero-typewriter relative inline-flex items-center font-serif text-[50px] font-medium text-[#5f9a20] leading-[60px]"
       aria-label={activeWord}
     >
       <span className="invisible">{measuredWidth}</span>
@@ -109,13 +109,11 @@ export function HeroSection() {
                 </p>
               </div>
 
-              <h1 className="max-w-[606px] font-serif text-[2.875rem] font-normal leading-[60px] text-ink">
+              <h1 className="max-w-[606px] font-sans text-[2.875rem] font-semibold leading-[60px] text-ink">
                 <span className="block">I design and scale product</span>
                 <span className="block">experiences that deliver</span>
                 <span className="block">
-                  <span className="italic">
-                    <RotatingHeroWord />
-                  </span>
+                  <RotatingHeroWord />
                 </span>
               </h1>
             </div>

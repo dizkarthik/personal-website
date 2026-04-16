@@ -12,8 +12,8 @@ export const heroMetrics = [
     iconSrc: "/assets/own-build-ship.svg",
   },
   {
-    title: "B2B to B2C Experience",
-    description: "Designed for both complex systems and high-scale consumer use",
+    title: "Systems That Scale",
+    description: "Designing scalable experiences with clarity and usability.",
     iconSrc: "/assets/b2b-b2cc.svg",
   },
   {
@@ -170,6 +170,54 @@ const caseStudyPlaceholderSlides = [
   )}`,
   alt: `Placeholder case study carousel ${slide.label}`,
 }));
+
+const aiOnboardingEvidenceImages = [
+  {
+    src: `data:image/svg+xml,${encodeURIComponent(
+      `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+        <rect width="1200" height="760" rx="36" fill="#ffffff"/>
+        <text x="80" y="110" fill="#212329" font-family="Figtree, Arial, sans-serif" font-size="44" font-weight="700">Signup to first workflow drop-off</text>
+        <text x="80" y="158" fill="#747772" font-family="Figtree, Arial, sans-serif" font-size="26">Most users never reached workflow creation or execution.</text>
+        <line x1="110" y1="620" x2="1090" y2="620" stroke="#d9dccf" stroke-width="2"/>
+        <line x1="110" y1="620" x2="110" y2="180" stroke="#d9dccf" stroke-width="2"/>
+        <polyline points="110,210 260,310 430,392 610,458 790,514 970,566 1090,592" fill="none" stroke="#7db34c" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="110" cy="210" r="8" fill="#7db34c"/>
+        <circle cx="260" cy="310" r="8" fill="#7db34c"/>
+        <circle cx="430" cy="392" r="8" fill="#7db34c"/>
+        <circle cx="610" cy="458" r="8" fill="#7db34c"/>
+        <circle cx="790" cy="514" r="8" fill="#7db34c"/>
+        <circle cx="970" cy="566" r="8" fill="#7db34c"/>
+        <circle cx="1090" cy="592" r="8" fill="#7db34c"/>
+        <text x="96" y="664" fill="#747772" font-family="Figtree, Arial, sans-serif" font-size="22">Signup</text>
+        <text x="215" y="664" fill="#747772" font-family="Figtree, Arial, sans-serif" font-size="22">Homepage</text>
+        <text x="395" y="664" fill="#747772" font-family="Figtree, Arial, sans-serif" font-size="22">Builder</text>
+        <text x="553" y="664" fill="#747772" font-family="Figtree, Arial, sans-serif" font-size="22">Draft</text>
+        <text x="725" y="664" fill="#747772" font-family="Figtree, Arial, sans-serif" font-size="22">Workflow</text>
+        <text x="914" y="664" fill="#747772" font-family="Figtree, Arial, sans-serif" font-size="22">Run</text>
+        <text x="1012" y="664" fill="#747772" font-family="Figtree, Arial, sans-serif" font-size="22">Value</text>
+      </svg>`,
+    )}`,
+    alt: "Activation funnel showing steep drop-off before users reached their first workflow",
+  },
+  {
+    src: `data:image/svg+xml,${encodeURIComponent(
+      `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+        <rect width="1200" height="760" rx="36" fill="#ffffff"/>
+        <text x="80" y="110" fill="#212329" font-family="Figtree, Arial, sans-serif" font-size="44" font-weight="700">What users needed before they could activate</text>
+        <text x="80" y="158" fill="#747772" font-family="Figtree, Arial, sans-serif" font-size="26">Interview themes consistently pointed to ambiguity, not capability gaps.</text>
+        <rect x="84" y="230" width="484" height="120" rx="28" fill="#f8f8f3" stroke="#e6e8dc"/>
+        <rect x="632" y="230" width="484" height="120" rx="28" fill="#f8f8f3" stroke="#e6e8dc"/>
+        <rect x="84" y="390" width="484" height="120" rx="28" fill="#f8f8f3" stroke="#e6e8dc"/>
+        <rect x="632" y="390" width="484" height="120" rx="28" fill="#f8f8f3" stroke="#e6e8dc"/>
+        <text x="124" y="286" fill="#212329" font-family="Figtree, Arial, sans-serif" font-size="30" font-weight="600">What should I build first?</text>
+        <text x="672" y="286" fill="#212329" font-family="Figtree, Arial, sans-serif" font-size="30" font-weight="600">Which use case is right for me?</text>
+        <text x="124" y="446" fill="#212329" font-family="Figtree, Arial, sans-serif" font-size="30" font-weight="600">What does success look like?</text>
+        <text x="672" y="446" fill="#212329" font-family="Figtree, Arial, sans-serif" font-size="30" font-weight="600">Can I trust the AI to set this up?</text>
+      </svg>`,
+    )}`,
+    alt: "Interview insight cards showing where onboarding ambiguity blocked activation",
+  },
+];
 
 export const caseStudies = [
   {
@@ -386,24 +434,226 @@ export const caseStudies = [
     ],
   },
   {
-    slug: "nrev-onboarding-conversion",
-    categories: ["nRev", "Web", "Onboarding"],
-    title: "How we increased our week-1 retention by 27%?",
+    slug: "ai-onboarding-activation",
+    categories: ["nRev", "AI", "Activation"],
+    title:
+      "Improving activation through system intelligence and faster time to value",
     company: "nRev",
     role: "Product Design Lead",
-    scope: "Onboarding, Retention, Revenue Impact",
+    scope: "AI-led Onboarding, Activation, Workflow Automation",
     period: "2026",
     description:
-      "Built and scaled the design function from scratch. Built and scaled the design function from scratch. Built and scaled the design function from scratch. Built and scaled the design function from scratch.Built and scaled the design function from scratch. Built and scaled the design function from scratch. Built and scaled the design function from scratch. Built and scaled the design function from scratch.",
+      "As a product design consultant, I redesigned onboarding for a GTM AI product to make the experience more context-aware, reduce ambiguity, and accelerate time to value.",
     overview:
-      "A focused onboarding redesign shaped around first-week activation, product clarity, and measurable retention improvement.",
-    tags: ["Onboarding", "Retention", "Revenue Impact", "Business Problem"],
-    initialIndex: 4,
-    images: caseStudyPlaceholderSlides,
+      "A structured onboarding redesign for a GTM AI platform, shaped around system intelligence, workflow guidance, and faster time to value.",
+    details: {
+      pageTitle:
+        "Improving activation through system intelligence and faster time to value",
+      pageDescription:
+        "As a product design consultant, I redesigned onboarding for a GTM AI product to make the experience more context-aware, reduce ambiguity, and accelerate time to value.",
+      topPills: [],
+      context:
+        "nRev is a GTM AI platform that helps teams build automated workflows for revenue operations such as lead enrichment, routing, and outreach.\n\nWhile the product had strong capabilities, users struggled to get started. The challenge was not feature availability, but helping users understand what to build, how to start, and how quickly they could achieve value.",
+      problemDescription:
+        "A large number of users dropped off immediately after signup.\n\nThere was no onboarding experience. Users were redirected to a generic homepage without guidance, context, or a clear next step.\n\nThis directly impacted activation and product adoption.",
+      problemAreas: [
+        "Users did not understand what to do",
+        "Users did not create workflows",
+        "Users did not reach their first meaningful outcome",
+      ],
+      assumption: "",
+      dataImages: [],
+      researchMethodsTitle: "Research Methods",
+      problemMethods: [
+        {
+          title: "Behavioral Analysis",
+          body:
+            "We analyzed how users navigated post-signup and observed hesitation, drop-offs, and incomplete actions.",
+        },
+        {
+          title: "Qualitative Feedback",
+          body:
+            "User conversations revealed confusion around use cases, starting points, and expected outcomes.",
+        },
+        {
+          title: "Competitive Analysis",
+          body:
+            "We analyzed onboarding patterns across tools like Clay, Gumloop, n8n, String by Pipedream, and Apollo to understand how similar products guide users.",
+        },
+      ],
+      findings: [
+        {
+          title:
+            "Users were not dropping due to product capability, but due to lack of direction.",
+          body: "",
+        },
+        { title: "Users did not know what to build or where to start", body: "" },
+        { title: "The system expected high upfront thinking", body: "" },
+        { title: "There was no guided path from intent to action", body: "" },
+        { title: "No early proof of value was shown", body: "" },
+      ],
+      keyInsight:
+        "The product was not leveraging available user context to make onboarding relevant and actionable.\n\nBy capturing a user’s work email, we could infer role, company, likely goals, and relevant workflows.\n\nHowever, the existing flow did not nudge users to provide this input, missing a key opportunity to personalize the experience.",
+      designApproach:
+        "We approached this as a system design problem rather than just a UI problem, using available user context to make onboarding more relevant from the first step.\n\nWe created a structured onboarding framework:\n\n1. Identify Role -> 2. Understand Goals -> 3. Choose Setup Style -> 4. Connect Essentials selectively -> 5. Activate with Relevant Workflow",
+      designPrinciples: [
+        "Reduce ambiguity early: Guide users from intent to action",
+        "Show value before effort: Let users experience outcomes before asking them to build",
+        "Shorten time to first value: Help users achieve meaningful output quickly",
+      ],
+      finalSolution:
+        "We introduced a structured onboarding layer to replace the generic homepage entry.",
+      solutionItems: [
+        {
+          title: "Role-based entry point",
+          body:
+            "We encouraged users to sign up using their work email. This allowed the system to infer user context such as role, company, and likely goals. Reduced friction in asking multiple questions. Enabled smarter personalization. Improved relevance from the first step.",
+        },
+        {
+          title: "Goal and use-case selection",
+          body:
+            "Users were guided to define what they wanted to achieve. Instead of generic questions, we framed it around outcomes like lead qualification, lead routing, and lead discovery. Reduced ambiguity. Aligned onboarding with user intent. Improved clarity on what to build.",
+        },
+        {
+          title: "Guided vs flexible setup",
+          body:
+            "Users could choose how they wanted to start: AI-guided setup, template-based workflows, or manual exploration. Supported different user preferences. Reduced cognitive overload. Increased confidence.",
+        },
+        {
+          title: "Context-aware activation",
+          body:
+            "Based on user inputs, we surfaced relevant workflows instead of a blank builder. Users saw pre-built workflows, suggested starting points, and contextual recommendations. Faster transition to action. Reduced decision paralysis.",
+        },
+        {
+          title: "Early value preview",
+          body:
+            "We introduced sample outputs and previews before users committed to building workflows. Built trust. Increased motivation. Helped users understand product value.",
+        },
+        {
+          title: "Instant value demonstration",
+          body:
+            "To build early trust and anticipation, we introduced an auto-run workflow based on the user’s role and context. Instead of asking users to build from scratch, we generated a sample output immediately after onboarding. For example, users could see enriched data such as leads derived from their LinkedIn activity, along with a clear explanation of how this output connects to their goals. This acted as a free preview of the product’s capability. Users were not just told what the product can do. They experienced it instantly. Built immediate trust in the system. Reduced uncertainty about product value. Increased confidence to proceed. Improved transition from onboarding to action.",
+        },
+      ],
+      closingLine:
+        "Since the experience launched recently, we want to validate its performance over a longer period. So far, early signals are trending ahead of our expected KPIs.",
+      metrics: [],
+      tradeOffs: [
+        "We initially considered collecting tech stack data but removed it to reduce friction",
+        "We prioritized faster activation over deeper personalization",
+        "We limited inputs to only high-impact information",
+      ],
+      conclusion:
+        "By introducing onboarding where none existed, we shifted the experience from confusion to clarity.\n\nThe key was not just improving UI, but turning user context and intent into a more relevant onboarding experience.\n\nBy combining guided onboarding with instant value demonstration, users were able to experience meaningful outcomes early, building trust and accelerating activation.\n\nSince the experience launched recently, we are continuing to validate performance over time. Early signals are encouraging and currently tracking ahead of our expected KPIs.",
+      embedUrl: "",
+      heroImage: {
+        src: "/assets/nrev-casestudy-cover.png",
+        alt: "nRev AI onboarding case study cover",
+      },
+      designGallery: [
+        {
+          src: "/assets/nrev-case-study-slide-1.png",
+          alt: "Old nRev signup screen",
+        },
+        {
+          src: "/assets/nrev-case-study-slide-2.png",
+          alt: "Old nRev signup to home flow",
+        },
+        {
+          src: "/assets/nrev-case-study-slide-3.png",
+          alt: "Problem analysis of the old nRev homepage flow",
+        },
+        {
+          src: "/assets/nrev-case-study-slide-4.png",
+          alt: "New signup approach using system intelligence",
+        },
+        {
+          src: "/assets/nrev-case-study-slide-5.png",
+          alt: "Form versus conversational onboarding comparison",
+        },
+        {
+          src: "/assets/nrev-case-study-slide-6.png",
+          alt: "Using system intelligence to turn email into context",
+        },
+        {
+          src: "/assets/nrev-case-study-slide-7.png",
+          alt: "Auto-run sample data to build user confidence",
+        },
+        {
+          src: "/assets/nrev-case-study-slide-8.png",
+          alt: "Faster time to value with context-aware workflow recommendations",
+        },
+        {
+          src: "/assets/nrev-case-study-slide-9.png",
+          alt: "Lightweight UI refresh creating more clarity in the entry experience",
+        },
+      ],
+    },
+    tags: [
+      "Activation",
+      "Onboarding",
+      "AI UX",
+      "Time to Value",
+      "Hypothesis Testing",
+      "User Interviews",
+      "Product Strategy",
+      "Workflow Automation",
+    ],
+    initialIndex: 0,
+    images: [
+      {
+        src: "/assets/nrev-case-study-slide-1.png",
+        alt: "Old nRev signup screen",
+      },
+      {
+        src: "/assets/nrev-case-study-slide-2.png",
+        alt: "Old nRev signup to home flow",
+      },
+      {
+        src: "/assets/nrev-case-study-slide-3.png",
+        alt: "Problem analysis of the old nRev homepage flow",
+      },
+      {
+        src: "/assets/nrev-case-study-slide-4.png",
+        alt: "New signup approach using system intelligence",
+      },
+      {
+        src: "/assets/nrev-case-study-slide-5.png",
+        alt: "Form versus conversational onboarding comparison",
+      },
+      {
+        src: "/assets/nrev-case-study-slide-6.png",
+        alt: "Using system intelligence to turn email into context",
+      },
+      {
+        src: "/assets/nrev-case-study-slide-7.png",
+        alt: "Auto-run sample data to build user confidence",
+      },
+      {
+        src: "/assets/nrev-case-study-slide-8.png",
+        alt: "Faster time to value with context-aware workflow recommendations",
+      },
+      {
+        src: "/assets/nrev-case-study-slide-9.png",
+        alt: "Lightweight UI refresh creating more clarity in the entry experience",
+      },
+    ],
   },
 ];
 
 export const additionalCaseStudyCards = [
+  {
+    categories: ["nRev", "AI", "Activation"],
+    href: "/case-studies/ai-onboarding-activation",
+    status: "",
+    title:
+      "Improving activation through system intelligence and faster time to value",
+    description:
+      "Redesigned onboarding for a GTM AI product to leverage system intelligence, reduce ambiguity, and help users reach value faster.",
+    imageSrc: "/assets/case-study-2-gtm.png",
+    overlaySrc: undefined,
+    imageAlt: "Preview for the nRev AI onboarding activation case study",
+  },
   {
     categories: ["Zoho", "ITSM", "Productivity"],
     status: "Publishing soon",
@@ -414,15 +664,5 @@ export const additionalCaseStudyCards = [
     overlaySrc: undefined,
     imageAlt:
       "Zoho ServiceDesk Plus dashboard with AI assistant workflow preview",
-  },
-  {
-    categories: ["GTM", "AI", "Onboarding"],
-    status: "Publishing soon",
-    title: "Designing an onboarding experience that drives activation",
-    description:
-      "Reimagined onboarding to help users quickly understand value, set up workflows, and reach meaningful activation faster.",
-    imageSrc: "/assets/case-study-2-gtm.png",
-    overlaySrc: undefined,
-    imageAlt: "Placeholder preview for GTM onboarding case study",
   },
 ];

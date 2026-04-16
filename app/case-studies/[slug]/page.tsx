@@ -40,6 +40,7 @@ const fallbackDetails = {
   pageTitle: "",
   pageDescription:
     "This case study captures the product context, decisions, interface exploration, and outcome structure behind the redesign.",
+  topPills: [] as string[],
   context:
     "The onboarding experience had to create a faster bridge between user intent and the first meaningful action. We used product signals, friction points, and user behavior to identify where the experience needed to become clearer and more confident.",
   problemDescription:
@@ -76,8 +77,11 @@ const fallbackDetails = {
     },
   ],
   findings: problemPoints,
+  keyInsight: "",
+  researchMethodsTitle: "Validating the assumption through multiple lenses",
   productGoal:
     "The goal was to simplify the entry journey without flattening the product value. Every screen had to reduce uncertainty and make the next action feel obvious.",
+  designApproach: "",
   goalItems: [
     {
       title: "Improve first-week activation by making the next step obvious.",
@@ -151,6 +155,15 @@ const fallbackDetails = {
     "The project helped shift the early journey from a fragile first-use experience to a more confident and repeatable product loop.",
   myRole:
     "I led the product design effort end to end across problem framing, retention hypothesis building, UX direction, solution design, and final experience improvements.",
+  assumption: "",
+  designPrinciples: [] as string[],
+  dataImages: [] as Array<{
+    src: string;
+    alt: string;
+  }>,
+  conclusion: "",
+  embedUrl: "",
+  tradeOffs: [] as string[],
 };
 
 const assumptionCopy =
@@ -161,6 +174,20 @@ const designPrinciples = [
   "Make the first action obvious and confidence-building",
   "Build trust before asking users to commit",
 ];
+
+const defaultDataImages = [
+  {
+    src: "/assets/data-1.png",
+    alt: "Retention curve chart showing the steepest drop in the first week",
+  },
+  {
+    src: "/assets/data-2.png",
+    alt: "Weekly cohort chart comparing retention across multiple IPL cohorts",
+  },
+];
+
+const defaultConclusion =
+  "By improving the early experience, we helped users move from confusion to confidence, driving stronger retention and better engagement. The solution was released alongside a broader UI refresh, but the retention gains came from focused product changes.";
 
 function SectionBlock({
   id,
@@ -194,6 +221,41 @@ function Paragraphs({ text }: { text: string }) {
           {paragraph}
         </p>
       ))}
+    </div>
+  );
+}
+
+function DesignApproachContent({ text }: { text: string }) {
+  const paragraphs = text.split("\n\n");
+  const sequence = paragraphs.at(-1);
+  const intro = sequence ? paragraphs.slice(0, -1) : paragraphs;
+  const steps = sequence?.includes("->")
+    ? sequence
+        .split("->")
+        .map((step) => step.trim())
+        .filter(Boolean)
+    : [];
+
+  return (
+    <div className="flex flex-col gap-4 text-base leading-7 text-copy">
+      {intro.map((paragraph) => (
+        <p key={paragraph}>{paragraph}</p>
+      ))}
+
+      {steps.length > 0 ? (
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-3 text-base font-semibold leading-7 text-ink">
+          {steps.map((step, index) => (
+            <div key={step} className="flex items-center gap-2">
+              <span>{step}</span>
+              {index < steps.length - 1 ? (
+                <span className="text-moss" aria-hidden="true">
+                  -&gt;
+                </span>
+              ) : null}
+            </div>
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 }
@@ -245,14 +307,16 @@ function MediaPanel({
 
 function TextGrid({
   items,
+  className = "",
 }: {
   items: Array<{
     title: string;
     body: string;
   }>;
+  className?: string;
 }) {
   return (
-    <div className="grid gap-x-5 gap-y-8 sm:grid-cols-2">
+    <div className={`grid gap-x-5 gap-y-8 sm:grid-cols-2 ${className}`}>
       {items.map((item) => (
         <div key={item.title}>
           <h3 className="text-[20px] font-semibold leading-7 text-ink">
@@ -389,11 +453,16 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
   const heroImage = details.heroImage ?? study.images[study.initialIndex ?? 0] ?? study.images[0];
   const designGallery = details.designGallery ?? [];
   const findings = details.findings.map((finding) => finding.title);
-  const outcomeMetrics = [
-    details.metrics[0],
-    details.metrics[1],
-    details.metrics[2],
-  ].filter(Boolean);
+  const outcomeMetrics = details.metrics.filter(Boolean);
+  const assumptionText = details.assumption || assumptionCopy;
+  const studyDesignPrinciples =
+    details.designPrinciples.length > 0 ? details.designPrinciples : designPrinciples;
+  const hasCustomDataImages = Object.prototype.hasOwnProperty.call(
+    study.details ?? {},
+    "dataImages",
+  );
+  const dataImages = hasCustomDataImages ? details.dataImages : defaultDataImages;
+  const conclusionText = details.conclusion || defaultConclusion;
 
   return (
     <main className="relative min-h-screen overflow-x-clip bg-canvas">
@@ -411,9 +480,9 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                 {study.categories.map((category, index) => (
                   <div key={category} className="flex items-center gap-3">
                     {index > 0 && (
-                      <span className="block h-1 w-1 rounded-full bg-moss" />
+                      <span className="block h-1 w-1 rounded-full bg-[#a8aba0]" />
                     )}
-                    <p className="text-base font-medium leading-none text-moss">
+                    <p className="text-base font-medium leading-none text-copy">
                       {category}
                     </p>
                   </div>
@@ -424,6 +493,18 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                   <p key={paragraph}>{paragraph}</p>
                 ))}
               </div>
+              {details.topPills.length > 0 ? (
+                <div className="mt-5 flex flex-wrap gap-3">
+                  {details.topPills.map((pill) => (
+                    <span
+                      key={pill}
+                      className="rounded-full border border-[#d9dccf] bg-[#f8f8f3] px-4 py-2.5 text-base leading-none text-[#747772]"
+                    >
+                      {pill}
+                    </span>
+                  ))}
+                </div>
+              ) : null}
             </header>
 
             <div className="mt-8 h-[260px] overflow-hidden rounded-[24px] sm:h-[360px]">
@@ -441,41 +522,58 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
 
               <SectionBlock title="The Problem Statement">
                 <Paragraphs text={details.problemDescription} />
+                {details.problemAreas.length > 0 ? (
+                  <BulletList items={details.problemAreas} className="mt-5" />
+                ) : null}
               </SectionBlock>
 
-              <div className="grid gap-5 sm:grid-cols-2">
-                <MediaPanel
-                  src="/assets/data-1.png"
-                  alt="Retention curve chart showing the steepest drop in the first week"
-                  className="h-[240px] sm:h-[320px]"
-                />
-                <MediaPanel
-                  src="/assets/data-2.png"
-                  alt="Weekly cohort chart comparing retention across multiple IPL cohorts"
-                  className="h-[240px] sm:h-[320px]"
-                />
-              </div>
+              {dataImages.length > 0 ? (
+                <div className="grid gap-5 sm:grid-cols-2">
+                  {dataImages.map((image) => (
+                    <MediaPanel
+                      key={image.src}
+                      src={image.src}
+                      alt={image.alt}
+                      className="h-[240px] sm:h-[320px]"
+                    />
+                  ))}
+                </div>
+              ) : null}
 
-              <section className="rounded-[20px] border border-[#f0dbb1] bg-white px-8 py-6">
-                <h2 className="text-[28px] font-semibold leading-tight text-ink">
-                  Assumption
-                </h2>
-                <p className="mt-3 text-base leading-7 text-copy">
-                  {assumptionCopy}
-                </p>
-              </section>
+              {details.assumption ? (
+                <section className="rounded-[20px] border border-[#f0dbb1] bg-white px-8 py-6">
+                  <h2 className="text-[28px] font-semibold leading-tight text-ink">
+                    Assumption
+                  </h2>
+                  <p className="mt-3 text-base leading-7 text-copy">
+                    {assumptionText}
+                  </p>
+                </section>
+              ) : null}
 
-              <SectionBlock title="Validating the assumption through multiple lenses">
-                <TextGrid items={details.problemMethods} />
+              <SectionBlock title={details.researchMethodsTitle}>
+                <TextGrid items={details.problemMethods} className="mt-6" />
               </SectionBlock>
 
               <SectionBlock title="Findings">
                 <BulletList items={findings} className="gap-x-3 gap-y-3 sm:grid-cols-2" />
               </SectionBlock>
 
+              {details.keyInsight ? (
+                <SectionBlock title="Key Insight">
+                  <Paragraphs text={details.keyInsight} />
+                </SectionBlock>
+              ) : null}
+
+              {details.designApproach ? (
+                <SectionBlock title="Design Approach">
+                  <DesignApproachContent text={details.designApproach} />
+                </SectionBlock>
+              ) : null}
+
               <SectionBlock title="Design Principles">
                 <div className="grid gap-5 md:grid-cols-3">
-                  {designPrinciples.map((principle, index) => (
+                  {studyDesignPrinciples.map((principle, index) => (
                     <div
                       key={principle}
                       className="rounded-[16px] border border-[#f0dbb1] bg-white px-5 py-4"
@@ -500,9 +598,18 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                 </div>
               </SectionBlock>
 
+              {details.tradeOffs.length > 0 ? (
+                <SectionBlock title="Trade-offs">
+                  <BulletList items={details.tradeOffs} />
+                </SectionBlock>
+              ) : null}
+
               <div className="flex flex-col gap-1">
                 {designGallery.length > 0 ? (
-                  <HorizontalScrollGallery images={designGallery} />
+                  <HorizontalScrollGallery
+                    images={designGallery}
+                    bottomSpacingMultiplier={0.5}
+                  />
                 ) : null}
 
                 <SectionBlock title="Outcome and Metrics">
@@ -519,7 +626,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
 
               <SectionBlock title="Conclusion">
                 <p className="text-base leading-7 text-copy">
-                  By improving the early experience, we helped users move from confusion to confidence, driving stronger retention and better engagement. The solution was released alongside a broader UI refresh, but the retention gains came from focused product changes.
+                  {conclusionText}
                 </p>
               </SectionBlock>
             </div>

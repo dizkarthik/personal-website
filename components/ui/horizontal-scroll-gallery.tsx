@@ -9,8 +9,10 @@ type GalleryImage = {
 
 export function HorizontalScrollGallery({
   images,
+  bottomSpacingMultiplier = 2,
 }: {
   images: GalleryImage[];
+  bottomSpacingMultiplier?: number;
 }) {
   const cardRefs = useRef<Array<HTMLDivElement | null>>([]);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -62,8 +64,8 @@ export function HorizontalScrollGallery({
   const lastIndex = images.length - 1;
 
   const bottomSpacing = useMemo(() => {
-    return `${Math.max(images.length - 1, 0) * 2}rem`;
-  }, [images.length]);
+    return `${Math.max(images.length - 1, 0) * bottomSpacingMultiplier}rem`;
+  }, [bottomSpacingMultiplier, images.length]);
 
   return (
     <section className="relative" style={{ paddingBottom: bottomSpacing }}>

@@ -205,7 +205,7 @@ function ProcessSection() {
             <div className="flex flex-col gap-3">
               <p className="font-['Figtree:Medium',sans-serif] font-medium text-[20px] text-black">Build Systems</p>
               <p className="font-['Figtree:Regular',sans-serif] text-[16px] leading-[28px] text-black">
-                Create scalable architecture — not isolated screens.
+                Create scalable architecture, not isolated screens.
               </p>
             </div>
             

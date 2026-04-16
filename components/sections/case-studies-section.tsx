@@ -62,9 +62,9 @@ function CaseStudyInfoCard({ study }: { study: CaseStudy }) {
             {study.categories.map((category, index) => (
               <div key={category} className="flex items-center gap-3">
                 {index > 0 && (
-                  <span className="block h-1 w-1 rounded-full bg-moss" />
+                  <span className="block h-1 w-1 rounded-full bg-[#a8aba0]" />
                 )}
-                <p className="text-base font-medium leading-none text-moss">
+                <p className="text-base font-medium leading-none text-copy">
                   {category}
                 </p>
               </div>
@@ -92,7 +92,7 @@ function CaseStudyInfoCard({ study }: { study: CaseStudy }) {
 
         <div className="inline-flex w-fit items-center gap-1 text-base font-semibold leading-none text-moss transition-colors duration-200 group-hover/case:text-[#6aa931]">
           View Case Study
-          <ArrowRightIcon className="h-5 w-5 transition-transform duration-300 ease-out group-hover/case:translate-x-1" />
+          <ArrowRightIcon className="relative top-px h-5 w-5 transition-transform duration-300 ease-out group-hover/case:translate-x-1" />
         </div>
       </div>
     </Link>
@@ -178,9 +178,8 @@ function SecondaryCaseStudyCard({
   card: AdditionalCaseStudyCard;
 }) {
   const hasOverlay = Boolean(card.overlaySrc);
-
-  return (
-    <article className="overflow-hidden rounded-[24px] bg-card/65 shadow-[0_18px_50px_rgba(33,35,41,0.06)] backdrop-blur-xl transition-shadow duration-200 hover:shadow-[0_20px_54px_rgba(33,35,41,0.08)]">
+  const content = (
+    <>
       <div className="relative h-[240px] overflow-hidden rounded-t-[24px] bg-[#d1d1d1]">
         {card.imageSrc ? (
           <>
@@ -204,14 +203,14 @@ function SecondaryCaseStudyCard({
         ) : null}
       </div>
 
-      <div className="flex flex-col gap-3 px-8 pb-10 pt-6">
+      <div className="flex flex-1 flex-col gap-3 px-8 pb-10 pt-6">
         <div className="flex flex-wrap items-center gap-3">
           {card.categories.map((category, index) => (
             <div key={category} className="flex items-center gap-3">
               {index > 0 && (
                 <span className="block h-1 w-1 rounded-full bg-[#a8aba0]" />
               )}
-              <p className="text-base font-medium leading-none text-ink">
+              <p className="text-base font-medium leading-none text-copy">
                 {category}
               </p>
             </div>
@@ -231,7 +230,36 @@ function SecondaryCaseStudyCard({
             </span>
           </div>
         ) : null}
+
+        {card.href ? (
+          <div className="mt-auto pt-3">
+            <div className="inline-flex w-fit items-center gap-1 text-base font-semibold leading-none text-moss transition-colors duration-200 group-hover:text-[#6aa931]">
+              View Case Study
+              <ArrowRightIcon className="relative top-px h-5 w-5 transition-transform duration-300 ease-out group-hover:translate-x-1" />
+            </div>
+          </div>
+        ) : null}
       </div>
+    </>
+  );
+
+  if (card.href) {
+    return (
+      <Link
+        href={card.href}
+        prefetch={false}
+        onClick={() => playButtonSound("click")}
+        className="group block overflow-hidden rounded-[24px] bg-card/65 shadow-[0_18px_50px_rgba(33,35,41,0.06)] backdrop-blur-xl transition-shadow duration-200 hover:shadow-[0_20px_54px_rgba(33,35,41,0.08)] focus:outline-none focus-visible:ring-2 focus-visible:ring-moss/40"
+        aria-label={`View case study: ${card.title}`}
+      >
+        {content}
+      </Link>
+    );
+  }
+
+  return (
+    <article className="overflow-hidden rounded-[24px] bg-card/65 shadow-[0_18px_50px_rgba(33,35,41,0.06)] backdrop-blur-xl transition-shadow duration-200 hover:shadow-[0_20px_54px_rgba(33,35,41,0.08)]">
+      {content}
     </article>
   );
 }
